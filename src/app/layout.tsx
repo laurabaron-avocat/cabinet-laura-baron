@@ -20,11 +20,20 @@ export const metadata: Metadata = {
     siteName: 'Maître Laura Baron - Avocat',
     title: 'Maître Laura Baron • Avocat Dommage Corporel | Bayonne & Toulouse',
     description: 'Avocat spécialisé en dommage corporel et indemnisation des victimes. Expertise en accidents de la route, médicaux, agressions. Bayonne & Toulouse.',
+    images: [
+      {
+        url: 'https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png',
+        width: 1200,
+        height: 630,
+        alt: 'Logo Maître Laura Baron - Avocat Dommage Corporel',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Maître Laura Baron • Avocat Dommage Corporel',
     description: 'Avocat spécialisé en dommage corporel et indemnisation des victimes. Bayonne & Toulouse.',
+    images: ['https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png'],
   },
   robots: {
     index: true,
@@ -52,11 +61,10 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" href="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png" />
       </head>
       <body className="antialiased">
         <Header />

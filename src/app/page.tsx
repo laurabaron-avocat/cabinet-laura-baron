@@ -141,7 +141,7 @@ export default async function HomePage() {
               <img
                 src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Maitre-Laura-Baron-Avocat-barreau-bayonne-specialiste-dommage-corporelle-accident-de-la-route.jpg"
                 alt="Maître Laura Baron - Avocat en dommage corporel"
-                className="w-full h-80 md:h-[500px] object-contain md:object-cover rounded-lg shadow-lg"
+                className="w-full h-80 md:h-[500px] object-contain md:object-cover rounded-lg shadow-lg md:object-[center_10%]"
               />
               <div className="mt-4 md:mt-6">
                 <h3 className="text-lg md:text-xl font-playfair font-semibold text-anthracite mb-2">
