@@ -54,7 +54,7 @@ export default function Header() {
             <img 
               src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png"
               alt="Logo Maître Laura Baron"
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
             <div className="hidden sm:block">
               <h1 className="text-lg font-semibold text-gray-900">Maître Laura Baron</h1>
@@ -109,7 +109,7 @@ export default function Header() {
                 <img 
                   src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png"
                   alt="Logo Maître Laura Baron"
-                  className="h-8 w-auto"
+                  className="h-10 w-auto"
                 />
                 <div>
                   <h1 className="text-sm font-semibold text-gray-900">Maître Laura Baron</h1>

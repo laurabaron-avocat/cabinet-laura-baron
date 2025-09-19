@@ -137,12 +137,19 @@ export default async function HomePage() {
               </div>
             </div>
             
-            <div className="bg-white p-6 md:p-8 rounded-sm shadow-lg">
-              <h2 className="text-xl md:text-2xl font-playfair font-semibold mb-4 md:mb-6 text-anthracite text-center">
-                Contact express
-              </h2>
-              <div className="text-center">
-                <ContactForm />
+            <div className="text-center">
+              <img
+                src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Maitre-Laura-Baron-Avocat-barreau-bayonne-specialiste-dommage-corporelle-accident-de-la-route.jpg"
+                alt="Maître Laura Baron - Avocat en dommage corporel"
+                className="w-full h-80 md:h-[500px] object-cover rounded-lg shadow-lg"
+              />
+              <div className="mt-4 md:mt-6">
+                <h3 className="text-lg md:text-xl font-playfair font-semibold text-anthracite mb-2">
+                  Maître Laura Baron
+                </h3>
+                <p className="text-sm md:text-base text-gray-700">
+                  Avocate en dommage corporel
+                </p>
               </div>
             </div>
           </div>
@@ -677,6 +684,22 @@ export default async function HomePage() {
                     Prendre rendez-vous
                   </Link>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Express */}
+      <section className="section-padding bg-white">
+        <div className="container-custom no-overflow">
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-beige p-6 md:p-8 rounded-sm shadow-lg">
+              <h2 className="text-xl md:text-2xl font-playfair font-semibold mb-4 md:mb-6 text-anthracite text-center">
+                Contact express
+              </h2>
+              <div className="text-center">
+                <ContactForm />
               </div>
             </div>
           </div>
