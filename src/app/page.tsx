@@ -113,7 +113,15 @@ export default async function HomePage() {
           <div className="mobile-grid-2 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="animate-slide-up">
               <div>
-                <h1 className="mobile-title font-playfair font-bold text-noir mb-4 md:mb-6 hero-claim leading-tight">
+                {/* Version Mobile du titre */}
+                <h1 className="md:hidden text-3xl font-playfair font-bold text-center mb-6 hero-claim leading-tight">
+                  <span className="block text-noir mb-3 text-4xl">Défendre vos droits</span>
+                  <span className="block text-anthracite text-2xl mb-3">après un accident,</span>
+                  <span className="block text-or text-3xl font-semibold bg-gradient-to-r from-or to-yellow-600 bg-clip-text text-transparent">notre expertise à votre service</span>
+                </h1>
+
+                {/* Version Desktop du titre */}
+                <h1 className="hidden md:block mobile-title font-playfair font-bold text-noir mb-4 md:mb-6 hero-claim leading-tight">
                   Défendre vos droits après un accident,
                   <span className="text-or block mt-2">notre expertise à votre service</span>
                 </h1>

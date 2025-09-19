@@ -73,10 +73,70 @@ export default function AvocateCabinetPage() {
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-beige via-white to-beige py-8 md:py-12">
+      <section className="bg-gradient-to-br from-beige via-white to-beige py-4 md:py-12">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-1 lg:order-1 lg:-mt-48">
+          {/* Version Mobile */}
+          <div className="lg:hidden">
+            {/* Titre et description en premier sur mobile */}
+            <div className="text-center mb-6">
+              <h1 className="text-3xl font-playfair font-bold text-noir mb-4">
+                Maître Laura Baron
+              </h1>
+              <p className="text-lg text-anthracite mb-6 leading-relaxed px-4">
+                Avocat spécialisé en dommage corporel, je mets mon expertise au service
+                des victimes d'accidents pour obtenir une juste indemnisation de leurs préjudices.
+              </p>
+            </div>
+
+            {/* Première image sur mobile */}
+            <div className="w-full max-w-sm mx-auto mb-6">
+              <img
+                src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Maitre-Laura-Baron-Avocat-barreau-bayonne-specialiste-dommage-corporelle-accident-de-la-vie.jpg"
+                alt="Maître Laura Baron, avocat au Barreau de Bayonne, spécialisée en dommage corporel"
+                className="w-full h-[28rem] object-cover object-top rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
+                loading="eager"
+              />
+            </div>
+
+            {/* Texte complet entre les images sur mobile */}
+            <div className="bg-white p-6 rounded-sm shadow-lg mx-4 mb-6">
+              <h2 className="text-xl font-playfair font-semibold mb-4 text-anthracite text-center">
+                Maître Laura Baron
+              </h2>
+              <p className="text-gray-700 leading-relaxed mb-6 text-sm">
+                Avocate au barreau de Bayonne, diplômée de l'École des Avocats de Toulouse où j'ai obtenu le CAPA, je consacre mon activité à la défense des victimes de dommages corporels : accidents de la route, erreurs médicales, agressions ou accidents de la vie. Consciente de la fragilité et des inquiétudes que traversent mes clients, je place l'écoute, la clarté et la disponibilité au cœur de ma pratique. Empathique et pédagogue à vos côtés, mais combative face aux compagnies d'assurances, je m'engage à obtenir pour vous une indemnisation juste et complète avec une approche à la fois humaine et déterminée.
+              </p>
+
+              <div className="space-y-3 text-sm text-gray-600">
+                <div className="flex items-center justify-center">
+                  <Phone size={16} className="text-or mr-3" />
+                  <a href="tel:+33750234606" className="hover:text-or transition-colors font-medium">
+                    07 50 23 46 06
+                  </a>
+                </div>
+                <div className="flex items-center justify-center">
+                  <MapPin size={16} className="text-or mr-3" />
+                  <a href="mailto:laurabaron.avocat@gmail.com" className="hover:text-or transition-colors font-medium">
+                    laurabaron.avocat@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Seconde image sur mobile */}
+            <div className="w-full max-w-sm mx-auto">
+              <img
+                src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Profile-Laura-Baron-Avocat-barreau-bayonne-specialiste-dommage-corporelle-accident-de-la-route.jpg"
+                alt="Portrait professionnel de Maître Laura Baron"
+                className="w-full h-80 object-cover object-center rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          {/* Version Desktop - Design original conservé */}
+          <div className="hidden lg:grid grid-cols-2 gap-12 items-center">
+            <div className="order-1 lg:-mt-48">
               <div className="pt-72">
                 <h1 className="text-4xl md:text-5xl font-playfair font-bold text-noir mb-6">
                   Maître Laura Baron
@@ -115,11 +175,11 @@ export default function AvocateCabinetPage() {
                 />
               </div>
             </div>
-            <div className="order-2 lg:order-2">
+            <div className="order-2">
               <div className="flex flex-col items-center">
                 {/* Photo principale de Maître Laura Baron */}
                 <div className="mb-8 w-full max-w-md">
-                  <img 
+                  <img
                     src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Maitre-Laura-Baron-Avocat-barreau-bayonne-specialiste-dommage-corporelle-accident-de-la-vie.jpg"
                     alt="Maître Laura Baron, avocat au Barreau de Bayonne, spécialisée en dommage corporel"
                     className="w-full h-[500px] lg:h-[600px] object-cover object-top rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
