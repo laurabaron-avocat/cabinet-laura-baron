@@ -56,9 +56,9 @@ export default function Header() {
               alt="Logo Maître Laura Baron"
               className="h-12 w-auto"
             />
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold text-gray-900">Maître Laura Baron</h1>
-              <p className="text-xs text-gray-600">Avocate - Dommage corporel</p>
+            <div className="block">
+              <h1 className="text-sm sm:text-lg font-semibold text-gray-900 leading-tight">Maître Laura Baron</h1>
+              <p className="text-xs text-gray-600 leading-tight">Avocate - Dommage corporel</p>
             </div>
           </Link>
 
