@@ -77,14 +77,15 @@ export default function AvocateCabinetPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-1 lg:order-1 lg:-mt-48">
-              <h1 className="text-4xl md:text-5xl font-playfair font-bold text-noir mb-6">
-                Maître Laura Baron
-              </h1>
+              <div className="pt-72">
+                <h1 className="text-4xl md:text-5xl font-playfair font-bold text-noir mb-6">
+                  Maître Laura Baron
+                </h1>
               <p className="text-xl text-anthracite mb-8 leading-relaxed">
-                Avocat spécialisé en dommage corporel, je mets mon expertise au service 
+                Avocat spécialisé en dommage corporel, je mets mon expertise au service
                 des victimes d'accidents pour obtenir une juste indemnisation de leurs préjudices.
               </p>
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="grid grid-cols-2 gap-4 text-sm mb-8">
                 <div className="flex items-center">
                   <Scale size={20} className="text-or mr-2" />
                   <span>Barreau de Bayonne</span>
@@ -102,6 +103,17 @@ export default function AvocateCabinetPage() {
                   <span>+10 ans d'expérience</span>
                 </div>
               </div>
+              </div>
+
+              {/* Photo de profil */}
+              <div className="max-w-md mt-72">
+                <img
+                  src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Profile-Laura-Baron-Avocat-barreau-bayonne-specialiste-dommage-corporelle-accident-de-la-route.jpg"
+                  alt="Portrait professionnel de Maître Laura Baron"
+                  className="w-full h-96 object-cover object-center rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
+                  loading="eager"
+                />
+              </div>
             </div>
             <div className="order-2 lg:order-2">
               <div className="flex flex-col items-center">
@@ -116,20 +128,23 @@ export default function AvocateCabinetPage() {
                 </div>
                 <div className="bg-white p-8 rounded-sm shadow-lg w-full">
                   <h2 className="text-2xl font-playfair font-semibold mb-4 text-anthracite">
-                    Bio courte
+                    Maître Laura Baron
                   </h2>
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    [À compléter par la cliente : bio courte de 2-3 lignes présentant son parcours 
-                    et sa spécialisation en dommage corporel]
+                  <p className="text-gray-700 leading-relaxed mb-6">
+                    Avocate au barreau de Bayonne, diplômée de l'École des Avocats de Toulouse où j'ai obtenu le CAPA, je consacre mon activité à la défense des victimes de dommages corporels : accidents de la route, erreurs médicales, agressions ou accidents de la vie. Consciente de la fragilité et des inquiétudes que traversent mes clients, je place l'écoute, la clarté et la disponibilité au cœur de ma pratique. Empathique et pédagogue à vos côtés, mais combative face aux compagnies d'assurances, je m'engage à obtenir pour vous une indemnisation juste et complète avec une approche à la fois humaine et déterminée.
                   </p>
-                  <div className="space-y-2 text-sm text-gray-600">
+                  <div className="space-y-3 text-sm text-gray-600">
                     <div className="flex items-center">
-                      <Phone size={16} className="text-or mr-2" />
-                      <span>05.XX.XX.XX.XX</span>
+                      <Phone size={16} className="text-or mr-3" />
+                      <a href="tel:+33750234606" className="hover:text-or transition-colors font-medium">
+                        07 50 23 46 06
+                      </a>
                     </div>
                     <div className="flex items-center">
-                      <MapPin size={16} className="text-or mr-2" />
-                      <span>contact@maitre-laura-baron.fr</span>
+                      <MapPin size={16} className="text-or mr-3" />
+                      <a href="mailto:laurabaron.avocat@gmail.com" className="hover:text-or transition-colors font-medium">
+                        laurabaron.avocat@gmail.com
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -267,6 +282,71 @@ export default function AvocateCabinetPage() {
         </div>
       </section>
 
+      {/* Photos du cabinet */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-playfair font-bold text-noir mb-12 text-center">
+              Nos locaux à Bayonne
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img
+                  src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Maitre-Laura-Baron-Avocat-barreau-bayonne-specialiste-dommage-corporelle-accident-de-la-route-salle-dattente.jpg"
+                  alt="Salle d'attente du cabinet - Maître Laura Baron"
+                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div className="p-4">
+                  <h3 className="font-playfair font-semibold text-anthracite mb-2">Salle d'attente</h3>
+                  <p className="text-gray-600 text-sm">Espace d'accueil chaleureux et confortable pour nos clients</p>
+                </div>
+              </div>
+
+              <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img
+                  src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Maitre-Laura-Baron-Avocat-barreau-bayonne-specialiste-erreur-medicale.jpg"
+                  alt="Bureau de consultation - Maître Laura Baron"
+                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div className="p-4">
+                  <h3 className="font-playfair font-semibold text-anthracite mb-2">Bureau de consultation</h3>
+                  <p className="text-gray-600 text-sm">Environnement professionnel et confidentiel pour nos entretiens</p>
+                </div>
+              </div>
+
+              <div className="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img
+                  src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Maitre-Laura-Baron-Avocat-bayonne-rendez-vous-dommage-corporelle-accident-de-la-route.jpg"
+                  alt="Espace de rendez-vous - Cabinet Maître Laura Baron"
+                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div className="p-4">
+                  <h3 className="font-playfair font-semibold text-anthracite mb-2">Espace de rendez-vous</h3>
+                  <p className="text-gray-600 text-sm">Cadre adapté pour un accompagnement personnalisé</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 text-center bg-beige p-8 rounded-sm">
+              <div className="flex items-center justify-center mb-4">
+                <MapPin className="w-6 h-6 text-or mr-3" />
+                <h3 className="text-xl font-playfair font-semibold text-anthracite">Cabinet de Bayonne</h3>
+              </div>
+              <p className="text-gray-700 mb-4">
+                24 Avenue Maréchal Foch, 64100 Bayonne
+              </p>
+              <p className="text-sm text-gray-600">
+                Accès facilité • Parking à proximité • Accessible aux personnes à mobilité réduite
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Honoraires */}
       <section className="section-padding bg-white">
         <div className="container-custom">
@@ -281,11 +361,11 @@ export default function AvocateCabinetPage() {
                   Consultation initiale
                 </h3>
                 <p className="text-gray-700 mb-4">
-                  Premier entretien d'évaluation de votre dossier et de vos droits.
+                  Premier entretien d'évaluation de votre dossier et de vos droits pour déterminer les meilleures stratégies d'indemnisation.
                 </p>
-                <div className="text-2xl font-bold text-or mb-2">[Tarif à définir]</div>
+                <div className="text-2xl font-bold text-or mb-2"><strong>GRATUITE</strong></div>
                 <p className="text-sm text-gray-600">
-                  Durée : 1h • Remboursée en cas de mandatement
+                  Durée : 1h • Analyse personnalisée de votre situation
                 </p>
               </div>
               
@@ -294,32 +374,31 @@ export default function AvocateCabinetPage() {
                   Honoraire de résultat
                 </h3>
                 <p className="text-gray-700 mb-4">
-                  Honoraire calculé sur l'indemnisation obtenue, selon la complexité du dossier.
+                  L'honoraire dépend de la teneur du dossier et de sa difficulté, compte tenu du temps qui doit y être alloué pour sa prise en charge. Il sera établi au cours de l'étude du dossier et soumis au client par une convention d'honoraire.
                 </p>
-                <div className="text-2xl font-bold text-or mb-2">[% à définir]</div>
+                <div className="text-2xl font-bold text-or mb-2">Sur mesure</div>
                 <p className="text-sm text-gray-600">
-                  Uniquement en cas de succès • Convention d'honoraire signée
+                  Uniquement en cas de succès • Convention d'honoraire personnalisée
                 </p>
               </div>
             </div>
             
             <div className="mt-12 bg-beige p-8 rounded-sm">
               <h3 className="text-xl font-playfair font-semibold mb-4 text-anthracite text-center">
-                Aide juridictionnelle
+                Prise en charge financière
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h4 className="font-semibold mb-2">Éligibilité</h4>
+                  <h4 className="font-semibold mb-2">Protection juridique</h4>
                   <p className="text-gray-700 text-sm">
-                    L'aide juridictionnelle peut être accordée selon vos ressources. 
-                    Nous étudions votre éligibilité lors de notre premier entretien.
+                    Lors de la première consultation, l'avocate vérifie si votre dossier peut être pris en charge par une protection juridique ou un contrat d'assurance qui le prévoit.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Avantages</h4>
+                  <h4 className="font-semibold mb-2">Aide juridictionnelle</h4>
                   <p className="text-gray-700 text-sm">
-                    Prise en charge totale ou partielle des frais d'avocat. 
-                    Possibilité de cumul avec l'honoraire de résultat selon les cas.
+                    Le cabinet ne traite pas les dossiers à l'aide juridictionnelle.
+                    Nous privilégions un accompagnement personnalisé avec des honoraires adaptés à chaque situation.
                   </p>
                 </div>
               </div>
