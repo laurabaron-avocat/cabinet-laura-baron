@@ -156,7 +156,7 @@ export default async function ArticlePage({ params }: PageProps) {
                   {post.excerpt}
                 </p>
 
-                <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600">
+                <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600 mb-8">
                   <div className="flex items-center bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full">
                     <User size={16} className="mr-2 text-or" />
                     <span className="font-medium">{post.authors?.name || 'Maître Laura Baron'}</span>
@@ -178,6 +178,15 @@ export default async function ArticlePage({ params }: PageProps) {
                     <Clock size={16} className="mr-2 text-or" />
                     <span>5 min de lecture</span>
                   </div>
+                </div>
+
+                {/* Social Share */}
+                <div className="w-full max-w-2xl mx-auto">
+                  <SocialShare
+                    title={post.title}
+                    excerpt={post.excerpt}
+                    url={`https://maitre-laura-baron.fr/ressources/${post.slug}`}
+                  />
                 </div>
               </header>
             </article>
@@ -207,37 +216,21 @@ export default async function ArticlePage({ params }: PageProps) {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-              {/* Social Share Sidebar */}
-              <div className="lg:col-span-1 order-2 lg:order-1">
-                <div className="sticky top-8">
-                  <SocialShare
-                    title={post.title}
-                    excerpt={post.excerpt}
-                    url={`https://maitre-laura-baron.fr/ressources/${post.slug}`}
-                  />
-                </div>
-              </div>
-
-              {/* Main Content */}
-              <div className="lg:col-span-3 order-1 lg:order-2">
-                <div className="bg-white">
-                  <div
-                    className="prose prose-lg max-w-none
-                    prose-headings:font-playfair prose-headings:text-anthracite prose-headings:mb-6 prose-headings:mt-8
-                    prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl
-                    prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6
-                    prose-a:text-or prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-anthracite prose-strong:font-semibold
-                    prose-ul:text-gray-700 prose-ol:text-gray-700
-                    prose-li:mb-2 prose-li:leading-relaxed
-                    prose-blockquote:border-l-4 prose-blockquote:border-or prose-blockquote:bg-beige/50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:italic
-                    prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8
-                    first-line:text-lg first-line:font-medium first-line:text-anthracite"
-                    dangerouslySetInnerHTML={{ __html: post.content_html }}
-                  />
-                </div>
-              </div>
+            <div className="bg-white">
+              <div
+                className="prose prose-lg max-w-none
+                prose-headings:font-playfair prose-headings:text-anthracite prose-headings:mb-6 prose-headings:mt-8
+                prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl
+                prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6
+                prose-a:text-or prose-a:no-underline hover:prose-a:underline
+                prose-strong:text-anthracite prose-strong:font-semibold
+                prose-ul:text-gray-700 prose-ol:text-gray-700
+                prose-li:mb-2 prose-li:leading-relaxed
+                prose-blockquote:border-l-4 prose-blockquote:border-or prose-blockquote:bg-beige/50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:italic
+                prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8
+                first-line:text-lg first-line:font-medium first-line:text-anthracite"
+                dangerouslySetInnerHTML={{ __html: post.content_html }}
+              />
             </div>
           </div>
         </div>

@@ -100,52 +100,46 @@ export default function SocialShare({ title, excerpt, url }: SocialShareProps) {
   return (
     <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
       <div className="bg-gradient-to-r from-beige to-white p-4 border-b border-gray-200">
-        <h3 className="text-lg font-playfair font-semibold text-anthracite flex items-center">
+        <h3 className="text-lg font-playfair font-semibold text-anthracite flex items-center justify-center">
           <Share2 size={20} className="mr-2 text-or" />
           Partager
         </h3>
-        <p className="text-sm text-gray-600 mt-1">
+        <p className="text-sm text-gray-600 mt-1 text-center">
           Diffusez cette ressource juridique
         </p>
       </div>
 
-      <div className="p-4">
-        {/* Boutons principaux de partage */}
-        <div className="grid grid-cols-2 gap-3 mb-4">
+      <div className="p-6">
+        {/* Boutons de partage en ligne */}
+        <div className="flex items-center justify-center space-x-4">
           {socialButtons.map((button) => (
             <a
               key={button.name}
               href={button.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${button.className} flex items-center justify-center p-3 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md group`}
+              className={`${button.className} flex items-center justify-center w-12 h-12 rounded-full transition-all duration-200 hover:scale-110 hover:shadow-lg group`}
               aria-label={button.ariaLabel}
+              title={button.name}
             >
-              <span className="mr-2 group-hover:scale-110 transition-transform">
+              <span className="group-hover:scale-110 transition-transform">
                 {button.icon}
-              </span>
-              <span className="text-sm font-medium hidden sm:inline">
-                {button.name}
               </span>
             </a>
           ))}
-        </div>
 
-        {/* Bouton copier le lien */}
-        <div className="border-t border-gray-200 pt-4">
+          {/* Bouton copier le lien */}
           <button
             onClick={copyToClipboard}
-            className={`w-full flex items-center justify-center p-3 rounded-lg border-2 border-dashed transition-all duration-200 ${
+            className={`flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-200 hover:scale-110 hover:shadow-lg ${
               copied
                 ? 'border-green-300 bg-green-50 text-green-700'
                 : 'border-gray-300 bg-gray-50 text-gray-700 hover:border-or hover:bg-or/5 hover:text-anthracite'
             }`}
             aria-label="Copier le lien de l'article"
+            title={copied ? 'Lien copié !' : 'Copier le lien'}
           >
-            <Link2 size={18} className={`mr-2 ${copied ? 'text-green-600' : ''}`} />
-            <span className="text-sm font-medium">
-              {copied ? '✓ Lien copié !' : 'Copier le lien'}
-            </span>
+            <Link2 size={18} className={copied ? 'text-green-600' : ''} />
           </button>
         </div>
       </div>

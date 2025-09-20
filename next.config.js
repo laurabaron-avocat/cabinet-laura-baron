@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 const nextConfig = {
-  output: 'export',
+  // Export statique seulement en production pour permettre Realtime en dev
+  ...(isDevelopment ? {} : { output: 'export' }),
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   images: {
