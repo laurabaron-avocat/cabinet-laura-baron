@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, User, Tag, FileText, ArrowRight } from 'lucide-react';
 import { getPostBySlug, getPosts } from '@/lib/queries';
 import SocialShare from '@/components/ui/SocialShare';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
@@ -216,22 +216,104 @@ export default async function ArticlePage({ params }: PageProps) {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white">
+            {/* Table of Contents - Optional */}
+            <div className="mb-8 p-6 bg-gradient-to-r from-beige/30 to-beige/10 rounded-lg border-l-4 border-or">
+              <h3 className="text-lg font-playfair font-semibold text-anthracite mb-3 flex items-center">
+                <FileText size={20} className="mr-2 text-or" />
+                Sommaire de l'article
+              </h3>
+              <p className="text-sm text-gray-600">
+                Guide complet sur {post.title.toLowerCase()} - Informations juridiques essentielles
+              </p>
+            </div>
+
+            {/* Main Article Content */}
+            <article className="bg-white">
               <div
                 className="prose prose-lg max-w-none
-                prose-headings:font-playfair prose-headings:text-anthracite prose-headings:mb-6 prose-headings:mt-8
-                prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl
-                prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6
-                prose-a:text-or prose-a:no-underline hover:prose-a:underline
-                prose-strong:text-anthracite prose-strong:font-semibold
-                prose-ul:text-gray-700 prose-ol:text-gray-700
-                prose-li:mb-2 prose-li:leading-relaxed
-                prose-blockquote:border-l-4 prose-blockquote:border-or prose-blockquote:bg-beige/50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:italic
-                prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8
-                first-line:text-lg first-line:font-medium first-line:text-anthracite"
+                prose-headings:font-playfair prose-headings:text-anthracite prose-headings:scroll-mt-24
+                prose-h1:text-4xl prose-h1:mb-8 prose-h1:mt-12 prose-h1:pb-4 prose-h1:border-b prose-h1:border-beige
+                prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-12 prose-h2:text-noir prose-h2:relative prose-h2:pl-6
+                prose-h2:before:content-[''] prose-h2:before:absolute prose-h2:before:left-0 prose-h2:before:top-0 prose-h2:before:bottom-0 prose-h2:before:w-1 prose-h2:before:bg-or prose-h2:before:rounded
+                prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8 prose-h3:text-anthracite prose-h3:font-semibold
+                prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-6 prose-h4:text-anthracite prose-h4:font-medium
+                prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg prose-p:hyphens-auto
+                prose-p:first-letter:text-5xl prose-p:first-letter:font-playfair prose-p:first-letter:font-bold prose-p:first-letter:text-or prose-p:first-letter:float-left prose-p:first-letter:mr-3 prose-p:first-letter:mt-1
+                prose-a:text-or prose-a:no-underline prose-a:font-medium hover:prose-a:underline hover:prose-a:text-yellow-600
+                prose-strong:text-anthracite prose-strong:font-semibold prose-strong:bg-or/10 prose-strong:px-1 prose-strong:rounded
+                prose-em:text-gray-600 prose-em:italic
+                prose-ul:text-gray-700 prose-ul:space-y-3
+                prose-ol:text-gray-700 prose-ol:space-y-3
+                prose-li:mb-2 prose-li:leading-relaxed prose-li:relative prose-li:pl-2
+                prose-ul>li:before:content-['▸'] prose-ul>li:before:text-or prose-ul>li:before:font-bold prose-ul>li:before:absolute prose-ul>li:before:left-0
+                prose-blockquote:border-l-4 prose-blockquote:border-or prose-blockquote:bg-gradient-to-r prose-blockquote:from-beige/60 prose-blockquote:to-beige/20 prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:relative prose-blockquote:shadow-sm
+                prose-blockquote:before:content-['"'] prose-blockquote:before:text-6xl prose-blockquote:before:text-or prose-blockquote:before:absolute prose-blockquote:before:top-2 prose-blockquote:before:left-2 prose-blockquote:before:font-playfair
+                prose-img:rounded-xl prose-img:shadow-xl prose-img:my-12 prose-img:border prose-img:border-gray-200
+                prose-table:border-collapse prose-table:border prose-table:border-gray-300 prose-table:rounded-lg prose-table:overflow-hidden
+                prose-th:bg-beige prose-th:text-anthracite prose-th:font-semibold prose-th:p-4 prose-th:border prose-th:border-gray-300
+                prose-td:p-4 prose-td:border prose-td:border-gray-300 prose-td:bg-white
+                prose-code:bg-beige/50 prose-code:text-anthracite prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:text-sm
+                prose-pre:bg-noir prose-pre:text-white prose-pre:p-6 prose-pre:rounded-lg prose-pre:overflow-x-auto"
                 dangerouslySetInnerHTML={{ __html: post.content_html }}
               />
-            </div>
+
+              {/* Article Conclusion */}
+              <div className="mt-12 p-6 bg-gradient-to-r from-beige/40 to-beige/10 rounded-lg border border-or/20">
+                <h3 className="text-xl font-playfair font-semibold text-anthracite mb-4 flex items-center">
+                  <ArrowRight size={20} className="mr-2 text-or" />
+                  Points clés à retenir
+                </h3>
+                <div className="text-gray-700 space-y-2">
+                  <p className="text-base leading-relaxed">
+                    Cette analyse juridique vous donne les clés pour comprendre <strong>{post.title.toLowerCase()}</strong>.
+                    Pour une évaluation personnalisée de votre situation, n'hésitez pas à consulter notre cabinet.
+                  </p>
+                  <p className="text-sm text-gray-600 italic">
+                    📅 Article mis à jour le {post.updated_at ? new Date(post.updated_at).toLocaleDateString('fr-FR') : 'récemment'}
+                    par Maître Laura Baron, avocat spécialisé en dommage corporel.
+                  </p>
+                </div>
+              </div>
+
+              {/* Social Share at End of Article */}
+              <div className="mt-12 pt-8 border-t border-gray-200">
+                <div className="text-center mb-6">
+                  <h3 className="text-xl font-playfair font-semibold text-anthracite mb-2">
+                    Cet article vous a été utile ?
+                  </h3>
+                  <p className="text-gray-600">
+                    Partagez-le avec d'autres personnes qui pourraient en bénéficier
+                  </p>
+                </div>
+                <SocialShare
+                  title={post.title}
+                  excerpt={post.excerpt}
+                  url={`https://maitre-laura-baron.fr/ressources/${post.slug}`}
+                />
+              </div>
+
+              {/* Author Bio */}
+              <div className="mt-12 p-6 bg-gradient-to-r from-noir to-anthracite rounded-lg text-white">
+                <div className="flex items-start space-x-4">
+                  <div className="w-16 h-16 bg-or rounded-full flex items-center justify-center flex-shrink-0">
+                    <User size={24} className="text-noir" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-playfair font-semibold mb-2">
+                      {post.authors?.name || 'Maître Laura Baron'}
+                    </h4>
+                    <p className="text-beige mb-3">
+                      Avocat spécialisé en dommage corporel et indemnisation des victimes
+                    </p>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      Forte de plusieurs années d'expérience en droit du dommage corporel,
+                      Maître Laura Baron accompagne les victimes d'accidents dans leurs démarches
+                      d'indemnisation avec expertise et bienveillance.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
