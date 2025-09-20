@@ -12,10 +12,15 @@ const isSupabaseConfigured = Boolean(
   supabaseAnonKey.length > 20
 );
 
-export const supabase = isSupabaseConfigured 
+export const supabase = isSupabaseConfigured
   ? createClient(supabaseUrl, supabaseAnonKey, {
       auth: {
         persistSession: false
+      },
+      realtime: {
+        params: {
+          eventsPerSecond: 10
+        }
       }
     })
   : null;
