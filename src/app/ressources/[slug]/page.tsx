@@ -5,6 +5,7 @@ import { ArrowLeft, Calendar, Clock, User, Tag, FileText, ArrowRight } from 'luc
 import { getPostBySlug, getPosts } from '@/lib/queries';
 import SocialShare from '@/components/ui/SocialShare';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import '@/styles/article.css';
 
 interface PageProps {
   params: {
@@ -230,30 +231,7 @@ export default async function ArticlePage({ params }: PageProps) {
             {/* Main Article Content */}
             <article className="bg-white">
               <div
-                className="prose prose-lg max-w-none
-                prose-headings:font-playfair prose-headings:text-anthracite prose-headings:scroll-mt-24
-                prose-h1:text-4xl prose-h1:mb-8 prose-h1:mt-12 prose-h1:pb-4 prose-h1:border-b prose-h1:border-beige
-                prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-12 prose-h2:text-noir prose-h2:relative prose-h2:pl-6
-                prose-h2:before:content-[''] prose-h2:before:absolute prose-h2:before:left-0 prose-h2:before:top-0 prose-h2:before:bottom-0 prose-h2:before:w-1 prose-h2:before:bg-or prose-h2:before:rounded
-                prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8 prose-h3:text-anthracite prose-h3:font-semibold
-                prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-6 prose-h4:text-anthracite prose-h4:font-medium
-                prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg prose-p:hyphens-auto
-                prose-p:first-letter:text-5xl prose-p:first-letter:font-playfair prose-p:first-letter:font-bold prose-p:first-letter:text-or prose-p:first-letter:float-left prose-p:first-letter:mr-3 prose-p:first-letter:mt-1
-                prose-a:text-or prose-a:no-underline prose-a:font-medium hover:prose-a:underline hover:prose-a:text-yellow-600
-                prose-strong:text-anthracite prose-strong:font-semibold prose-strong:bg-or/10 prose-strong:px-1 prose-strong:rounded
-                prose-em:text-gray-600 prose-em:italic
-                prose-ul:text-gray-700 prose-ul:space-y-3
-                prose-ol:text-gray-700 prose-ol:space-y-3
-                prose-li:mb-2 prose-li:leading-relaxed prose-li:relative prose-li:pl-2
-                prose-ul>li:before:content-['▸'] prose-ul>li:before:text-or prose-ul>li:before:font-bold prose-ul>li:before:absolute prose-ul>li:before:left-0
-                prose-blockquote:border-l-4 prose-blockquote:border-or prose-blockquote:bg-gradient-to-r prose-blockquote:from-beige/60 prose-blockquote:to-beige/20 prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:relative prose-blockquote:shadow-sm
-                prose-blockquote:before:content-['"'] prose-blockquote:before:text-6xl prose-blockquote:before:text-or prose-blockquote:before:absolute prose-blockquote:before:top-2 prose-blockquote:before:left-2 prose-blockquote:before:font-playfair
-                prose-img:rounded-xl prose-img:shadow-xl prose-img:my-12 prose-img:border prose-img:border-gray-200
-                prose-table:border-collapse prose-table:border prose-table:border-gray-300 prose-table:rounded-lg prose-table:overflow-hidden
-                prose-th:bg-beige prose-th:text-anthracite prose-th:font-semibold prose-th:p-4 prose-th:border prose-th:border-gray-300
-                prose-td:p-4 prose-td:border prose-td:border-gray-300 prose-td:bg-white
-                prose-code:bg-beige/50 prose-code:text-anthracite prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:text-sm
-                prose-pre:bg-noir prose-pre:text-white prose-pre:p-6 prose-pre:rounded-lg prose-pre:overflow-x-auto"
+                className="article-content"
                 dangerouslySetInnerHTML={{ __html: post.content_html }}
               />
 
