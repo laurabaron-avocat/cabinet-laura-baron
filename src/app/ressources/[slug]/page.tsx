@@ -181,14 +181,6 @@ export default async function ArticlePage({ params }: PageProps) {
                   </div>
                 </div>
 
-                {/* Social Share */}
-                <div className="w-full max-w-2xl mx-auto">
-                  <SocialShare
-                    title={post.title}
-                    excerpt={post.excerpt}
-                    url={`https://maitre-laura-baron.fr/ressources/${post.slug}`}
-                  />
-                </div>
               </header>
             </article>
           </div>
