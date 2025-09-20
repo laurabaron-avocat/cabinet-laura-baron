@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Search, BookOpen, FileText, Users, Calendar, Tag, ArrowRight, RefreshCw, Clock, User } from 'lucide-react';
 import { useRealtimePosts, useRealtimeCategories, useRealtimeTags } from '@/hooks/useRealtimePosts';
+import RealtimeTest from '@/components/RealtimeTest';
 import type { Database } from '@/lib/supabase';
 
 type Post = Database['public']['Tables']['posts']['Row'] & {
@@ -322,6 +323,9 @@ export default function RessourcesContent({
           </div>
         </div>
       </section>
+
+      {/* Test Realtime - Développement uniquement */}
+      {process.env.NODE_ENV === 'development' && <RealtimeTest />}
     </>
   );
 }
