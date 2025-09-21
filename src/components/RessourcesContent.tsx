@@ -50,9 +50,16 @@ export default function RessourcesContent({
 
   // Handle production realtime updates
   const handleProductionUpdate = () => {
-    // Force a page refresh to get new data
-    if (typeof window !== 'undefined') {
-      window.location.reload();
+    try {
+      // Force a page refresh to get new data
+      if (typeof window !== 'undefined') {
+        // Small delay to avoid React hydration issues
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
+      }
+    } catch (error) {
+      console.error('Error in handleProductionUpdate:', error);
     }
   };
 

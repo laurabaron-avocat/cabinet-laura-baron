@@ -18,65 +18,102 @@ export default function ProductionRealtime({ onDataUpdate }: ProductionRealtimeP
 
     console.log('🔄 Initializing Realtime for production...');
 
-    const channel = supabase
-      .channel('posts_realtime_production')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'posts',
-          filter: 'status=eq.published'
-        },
-        (payload) => {
-          console.log('🔥 Production Realtime update:', payload.eventType);
+    let channel: any = null;
+    let mounted = true;
 
-          // Force page refresh or data update
-          if (payload.eventType === 'INSERT' || payload.eventType === 'UPDATE' || payload.eventType === 'DELETE') {
-            console.log('📝 Updating posts data...');
-            onDataUpdate();
+    const initChannel = () => {
+      try {
+        channel = supabase
+          .channel('posts_realtime_production')
+          .on(
+            'postgres_changes',
+            {
+              event: '*',
+              schema: 'public',
+              table: 'posts',
+              filter: 'status=eq.published'
+            },
+            (payload) => {
+              if (!mounted) return;
 
-            // Optional: Show notification to user
-            if (typeof window !== 'undefined' && window.location.pathname === '/ressources') {
-              // Small visual indicator that content was updated
-              const indicator = document.createElement('div');
-              indicator.innerHTML = '✅ Contenu mis à jour';
-              indicator.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #059669;
-                color: white;
-                padding: 8px 16px;
-                border-radius: 6px;
-                z-index: 9999;
-                font-size: 14px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-              `;
-              document.body.appendChild(indicator);
+              console.log('🔥 Production Realtime update:', payload.eventType);
 
-              setTimeout(() => {
-                document.body.removeChild(indicator);
-              }, 3000);
+              // Force page refresh or data update
+              if (payload.eventType === 'INSERT' || payload.eventType === 'UPDATE' || payload.eventType === 'DELETE') {
+                console.log('📝 Updating posts data...');
+
+                try {
+                  onDataUpdate();
+                } catch (error) {
+                  console.error('Error calling onDataUpdate:', error);
+                }
+
+                // Optional: Show notification to user
+                if (typeof window !== 'undefined' && window.location.pathname === '/ressources') {
+                  try {
+                    // Small visual indicator that content was updated
+                    const indicator = document.createElement('div');
+                    indicator.innerHTML = '✅ Contenu mis à jour';
+                    indicator.style.cssText = `
+                      position: fixed;
+                      top: 20px;
+                      right: 20px;
+                      background: #059669;
+                      color: white;
+                      padding: 8px 16px;
+                      border-radius: 6px;
+                      z-index: 9999;
+                      font-size: 14px;
+                      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    `;
+                    document.body.appendChild(indicator);
+
+                    setTimeout(() => {
+                      try {
+                        if (document.body.contains(indicator)) {
+                          document.body.removeChild(indicator);
+                        }
+                      } catch (e) {
+                        console.warn('Error removing indicator:', e);
+                      }
+                    }, 3000);
+                  } catch (error) {
+                    console.warn('Error showing notification:', error);
+                  }
+                }
+              }
             }
-          }
-        }
-      )
-      .subscribe((status) => {
-        console.log('📡 Production WebSocket status:', status);
-        if (status === 'SUBSCRIBED') {
-          setIsConnected(true);
-          console.log('✅ Production Realtime connected successfully');
-        } else if (status === 'CHANNEL_ERROR') {
-          setIsConnected(false);
-          console.error('❌ Production Realtime connection failed');
-        }
-      });
+          )
+          .subscribe((status) => {
+            if (!mounted) return;
+
+            console.log('📡 Production WebSocket status:', status);
+            if (status === 'SUBSCRIBED') {
+              setIsConnected(true);
+              console.log('✅ Production Realtime connected successfully');
+            } else if (status === 'CHANNEL_ERROR') {
+              setIsConnected(false);
+              console.error('❌ Production Realtime connection failed');
+            }
+          });
+      } catch (error) {
+        console.error('Error initializing Realtime:', error);
+      }
+    };
+
+    initChannel();
 
     // Cleanup
     return () => {
+      mounted = false;
       console.log('🧹 Cleaning up Realtime connection');
-      supabase.removeChannel(channel);
+      if (channel && supabase) {
+        try {
+          supabase.removeChannel(channel);
+        } catch (error) {
+          console.warn('Error removing channel:', error);
+        }
+      }
     };
   }, [onDataUpdate]);
 
