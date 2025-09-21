@@ -1,10 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Search, BookOpen, FileText, Users, Calendar, Tag, ArrowRight, RefreshCw, Clock, User } from 'lucide-react';
-import { useRealtimePosts, useRealtimeCategories, useRealtimeTags } from '@/hooks/useRealtimePosts';
-import RealtimeTest from '@/components/RealtimeTest';
-import ProductionRealtime from '@/components/ProductionRealtime';
+import { Search, BookOpen, FileText, Users, Calendar, Tag, ArrowRight, Clock, User } from 'lucide-react';
 import type { Database } from '@/lib/supabase';
 
 type Post = Database['public']['Tables']['posts']['Row'] & {
@@ -39,29 +36,11 @@ export default function RessourcesContent({
   initialCategories,
   initialTags,
 }: RessourcesContentProps) {
-  const { posts: featuredPosts, isLoading: isFeaturedLoading } = useRealtimePosts(initialFeaturedPosts);
-  const { posts: recentPosts, isLoading: isRecentLoading } = useRealtimePosts(initialRecentPosts);
-  const categories = useRealtimeCategories(initialCategories);
-  const tags = useRealtimeTags(initialTags);
-
-  // Get the most recent posts for featured and recent sections
-  const displayFeaturedPosts = featuredPosts.slice(0, 3);
-  const displayRecentPosts = recentPosts.slice(0, 6);
-
-  // Handle production realtime updates
-  const handleProductionUpdate = () => {
-    try {
-      // Force a page refresh to get new data
-      if (typeof window !== 'undefined') {
-        // Small delay to avoid React hydration issues
-        setTimeout(() => {
-          window.location.reload();
-        }, 100);
-      }
-    } catch (error) {
-      console.error('Error in handleProductionUpdate:', error);
-    }
-  };
+  // Utilisation directe des données sans hooks Realtime pour éviter erreurs React
+  const displayFeaturedPosts = initialFeaturedPosts.slice(0, 3);
+  const displayRecentPosts = initialRecentPosts.slice(0, 6);
+  const categories = initialCategories;
+  const tags = initialTags;
 
   return (
     <>
@@ -89,13 +68,12 @@ export default function RessourcesContent({
                 </div>
               </div>
 
-              {/* Loading indicator */}
-              {(isFeaturedLoading || isRecentLoading) && (
-                <div className="mt-4 flex items-center justify-center text-or">
-                  <RefreshCw size={20} className="animate-spin mr-2" />
-                  <span className="text-sm">Mise à jour en cours...</span>
-                </div>
-              )}
+              {/* Info synchronisation */}
+              <div className="mt-4 text-center">
+                <p className="text-sm text-gray-600">
+                  💡 Les nouveaux articles apparaissent automatiquement grâce à notre système de synchronisation
+                </p>
+              </div>
           </div>
         </div>
       </section>
@@ -340,11 +318,7 @@ export default function RessourcesContent({
         </div>
       </section>
 
-      {/* Test Realtime - Développement uniquement */}
-      {process.env.NODE_ENV === 'development' && <RealtimeTest />}
-
-      {/* Production Realtime - Fonctionne en production sur Netlify */}
-      <ProductionRealtime onDataUpdate={handleProductionUpdate} />
+      {/* Note: Synchronisation via ISR + Webhook au lieu de Realtime client */}
     </>
   );
 }

@@ -1,1 +1,1 @@
-{"version":1,"functions":{"/contact":{},"/dommage-corporel":{},"/avocate-cabinet":{},"/ressources":{},"/plan-du-site":{},"/mentions-legales":{},"/ressources/[slug]":{},"/politique-confidentialite":{},"/indemnisation-victimes":{}}}
+{"version":1,"functions":{"/indemnisation-victimes":{},"/dommage-corporel":{},"/mentions-legales":{},"/plan-du-site":{},"/contact":{},"/avocate-cabinet":{},"/ressources":{},"/politique-confidentialite":{},"/ressources/[slug]":{},"/ressources/tag/[slug]":{},"/ressources/categorie/[slug]":{}}}
