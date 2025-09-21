@@ -1,15 +1,17 @@
 /** @type {import('next').NextConfig} */
-const isDevelopment = process.env.NODE_ENV === 'development';
-
 const nextConfig = {
-  // Export statique seulement en production pour permettre Realtime en dev
-  ...(isDevelopment ? {} : { output: 'export' }),
+  // Configuration pour Netlify avec Realtime
+  // On supprime 'output: export' pour permettre le JavaScript côté client
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   images: {
     unoptimized: true,
     formats: ['image/webp', 'image/avif'],
     domains: ['images.pexels.com', 'qncljsxdjefkimfxdzuf.supabase.co'],
+  },
+  // Optimisations pour Netlify
+  experimental: {
+    esmExternals: true,
   },
 };
 

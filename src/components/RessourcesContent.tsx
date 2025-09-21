@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Search, BookOpen, FileText, Users, Calendar, Tag, ArrowRight, RefreshCw, Clock, User } from 'lucide-react';
 import { useRealtimePosts, useRealtimeCategories, useRealtimeTags } from '@/hooks/useRealtimePosts';
 import RealtimeTest from '@/components/RealtimeTest';
+import ProductionRealtime from '@/components/ProductionRealtime';
 import type { Database } from '@/lib/supabase';
 
 type Post = Database['public']['Tables']['posts']['Row'] & {
@@ -46,6 +47,14 @@ export default function RessourcesContent({
   // Get the most recent posts for featured and recent sections
   const displayFeaturedPosts = featuredPosts.slice(0, 3);
   const displayRecentPosts = recentPosts.slice(0, 6);
+
+  // Handle production realtime updates
+  const handleProductionUpdate = () => {
+    // Force a page refresh to get new data
+    if (typeof window !== 'undefined') {
+      window.location.reload();
+    }
+  };
 
   return (
     <>
@@ -326,6 +335,9 @@ export default function RessourcesContent({
 
       {/* Test Realtime - Développement uniquement */}
       {process.env.NODE_ENV === 'development' && <RealtimeTest />}
+
+      {/* Production Realtime - Fonctionne en production sur Netlify */}
+      <ProductionRealtime onDataUpdate={handleProductionUpdate} />
     </>
   );
 }

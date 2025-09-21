@@ -1,6 +1,13 @@
 [build]
-  command = "npm run build"
-  publish = "out"
+  command = "npx @netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Plugin Netlify pour Next.js avec support ISR et Realtime
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[headers]]
   for = "/*"
