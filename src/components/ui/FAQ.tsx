@@ -6,7 +6,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 interface FAQItem {
   id: string;
   question: string;
-  answer: string;
+  answer_html: string;
 }
 
 interface FAQProps {
@@ -33,7 +33,7 @@ export default function FAQ({ items, pageKey = 'default' }: FAQProps) {
       name: item.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: item.answer,
+        text: item.answer_html,
       },
     })),
   };
@@ -71,7 +71,7 @@ export default function FAQ({ items, pageKey = 'default' }: FAQProps) {
                 id={`faq-answer-${item.id}`}
                 className="px-4 md:px-6 pb-3 md:pb-4 text-gray-700 leading-relaxed animate-fade-in text-sm md:text-base"
               >
-                <div dangerouslySetInnerHTML={{ __html: item.answer }} />
+                <div dangerouslySetInnerHTML={{ __html: item.answer_html }} />
               </div>
             )}
           </div>
