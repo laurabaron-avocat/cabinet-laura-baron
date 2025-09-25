@@ -115,6 +115,17 @@ export default async function DommageCorporelPage() {
                     </li>
                   </ul>
                 </div>
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <Link
+                    href="/ressources/accidents-de-la-route-guide-complet"
+                    className="inline-flex items-center text-or hover:text-yellow-600 font-medium transition-colors"
+                  >
+                    En savoir plus
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -155,6 +166,17 @@ export default async function DommageCorporelPage() {
                     </li>
                   </ul>
                 </div>
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <Link
+                    href="/ressources/accidents-medicaux-indemnisation-guide"
+                    className="inline-flex items-center text-or hover:text-yellow-600 font-medium transition-colors"
+                  >
+                    En savoir plus
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -164,7 +186,7 @@ export default async function DommageCorporelPage() {
                 <Shield size={40} className="text-or flex-shrink-0" />
                 <div>
                   <h3 className="text-2xl font-playfair font-semibold text-anthracite mb-2">
-                    Agressions - CIVI
+                    Agression
                   </h3>
                   <p className="text-gray-600">Victimes d'infractions • Solidarité nationale</p>
                 </div>
@@ -194,6 +216,17 @@ export default async function DommageCorporelPage() {
                       Violences conjugales et familiales
                     </li>
                   </ul>
+                </div>
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <Link
+                    href="/ressources/agression-civi-indemnisation-victimes"
+                    className="inline-flex items-center text-or hover:text-yellow-600 font-medium transition-colors"
+                  >
+                    En savoir plus
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -234,6 +267,17 @@ export default async function DommageCorporelPage() {
                       Morsures d'animaux et chutes
                     </li>
                   </ul>
+                </div>
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <Link
+                    href="/ressources/accidents-de-la-vie-responsabilite-indemnisation"
+                    className="inline-flex items-center text-or hover:text-yellow-600 font-medium transition-colors"
+                  >
+                    En savoir plus
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             </div>
