@@ -117,7 +117,7 @@ export default async function DommageCorporelPage() {
                 </div>
                 <div className="mt-6 pt-4 border-t border-gray-200">
                   <Link
-                    href="/ressources/accidents-de-la-route-guide-complet"
+                    href="/ressources/accidents-route-responsabilite-dommage-corporel-guide-2025"
                     className="inline-flex items-center text-or hover:text-yellow-600 font-medium transition-colors"
                   >
                     En savoir plus

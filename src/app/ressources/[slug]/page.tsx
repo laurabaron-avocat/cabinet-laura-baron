@@ -240,7 +240,7 @@ export default async function ArticlePage({ params }: PageProps) {
                   </p>
                   <p className="text-sm text-gray-600 italic">
                     📅 Article mis à jour le {post.updated_at ? new Date(post.updated_at).toLocaleDateString('fr-FR') : 'récemment'}
-                    par Maître Laura Baron, avocat spécialisé en dommage corporel.
+                    par Maître Laura Baron, avocat en dommage corporel.
                   </p>
                 </div>
               </div>
@@ -273,7 +273,7 @@ export default async function ArticlePage({ params }: PageProps) {
                       {post.authors?.name || 'Maître Laura Baron'}
                     </h4>
                     <p className="text-beige mb-3">
-                      Avocat spécialisé en dommage corporel et indemnisation des victimes
+                      Avocat en dommage corporel et indemnisation des victimes
                     </p>
                     <p className="text-sm text-gray-300 leading-relaxed">
                       Forte de plusieurs années d'expérience en droit du dommage corporel,

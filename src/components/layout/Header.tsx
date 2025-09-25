@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { Phone, Menu, X } from 'lucide-react';
+import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Lock/unlock body scroll when menu opens/closes
   useEffect(() => {
@@ -39,7 +40,16 @@ export default function Header() {
   const navigation = [
     { name: 'Accueil', href: '/' },
     { name: 'Avocate & Cabinet', href: '/avocate-cabinet' },
-    { name: 'Dommage corporel', href: '/dommage-corporel' },
+    {
+      name: 'Dommage corporel',
+      href: '/dommage-corporel',
+      dropdown: [
+        { name: 'Accidents de la route', href: '/dommage-corporel#accidents-route' },
+        { name: 'Accidents médicaux', href: '/dommage-corporel#accidents-medicaux' },
+        { name: 'Agression', href: '/dommage-corporel#agressions' },
+        { name: 'Accidents de la vie', href: '/dommage-corporel#accidents-vie' },
+      ]
+    },
     { name: 'Indemnisation', href: '/indemnisation-victimes' },
     { name: 'Ressources', href: '/ressources' },
     { name: 'Contact', href: '/contact' },
@@ -65,13 +75,48 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-6 xl:space-x-8">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-amber-600 px-2 xl:px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap"
-              >
-                {item.name}
-              </Link>
+              <div key={item.name} className="relative group">
+                {item.dropdown ? (
+                  <>
+                    <button
+                      className="text-gray-700 hover:text-amber-600 px-2 xl:px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap flex items-center"
+                      onMouseEnter={() => setIsDropdownOpen(true)}
+                      onMouseLeave={() => setIsDropdownOpen(false)}
+                    >
+                      {item.name}
+                      <ChevronDown size={16} className="ml-1" />
+                    </button>
+                    <div
+                      className="absolute left-0 top-full mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+                      onMouseEnter={() => setIsDropdownOpen(true)}
+                      onMouseLeave={() => setIsDropdownOpen(false)}
+                    >
+                      <Link
+                        href={item.href}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-amber-600 transition-colors border-b border-gray-100"
+                      >
+                        Vue d'ensemble
+                      </Link>
+                      {item.dropdown.map((dropdownItem) => (
+                        <Link
+                          key={dropdownItem.name}
+                          href={dropdownItem.href}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-amber-600 transition-colors"
+                        >
+                          {dropdownItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="text-gray-700 hover:text-amber-600 px-2 xl:px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap"
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -130,14 +175,29 @@ export default function Header() {
               <nav className="flex-1 px-4 py-8">
                 <div className="space-y-1">
                   {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="menu-item-stagger block px-4 py-4 text-lg font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50 rounded-lg transition-all duration-200 border-b border-gray-100 last:border-b-0 hover:translate-x-2"
-                      onClick={handleMenuToggle}
-                    >
-                      {item.name}
-                    </Link>
+                    <div key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="menu-item-stagger block px-4 py-4 text-lg font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50 rounded-lg transition-all duration-200 border-b border-gray-100 last:border-b-0 hover:translate-x-2"
+                        onClick={handleMenuToggle}
+                      >
+                        {item.name}
+                      </Link>
+                      {item.dropdown && (
+                        <div className="ml-4 mt-2 space-y-1">
+                          {item.dropdown.map((dropdownItem) => (
+                            <Link
+                              key={dropdownItem.name}
+                              href={dropdownItem.href}
+                              className="block px-4 py-2 text-sm text-gray-600 hover:text-amber-600 hover:bg-gray-50 rounded-lg transition-colors"
+                              onClick={handleMenuToggle}
+                            >
+                              • {dropdownItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               </nav>
