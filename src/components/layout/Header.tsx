@@ -79,7 +79,7 @@ export default function Header() {
                 {item.dropdown ? (
                   <>
                     <button
-                      className="text-gray-700 hover:text-amber-600 px-2 xl:px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap flex items-center"
+                      className="text-gray-700 hover:text-amber-600 px-2 xl:px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap inline-flex items-baseline"
                       onMouseEnter={() => setIsDropdownOpen(true)}
                       onMouseLeave={() => setIsDropdownOpen(false)}
                     >
