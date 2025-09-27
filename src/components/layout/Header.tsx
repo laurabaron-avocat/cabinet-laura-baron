@@ -8,6 +8,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
 
   // Lock/unlock body scroll when menu opens/closes
   useEffect(() => {
@@ -30,11 +31,16 @@ export default function Header() {
       setTimeout(() => {
         setIsMenuOpen(false);
         setIsAnimating(false);
+        setMobileDropdownOpen(null); // Reset dropdown on close
       }, 300);
     } else {
       // Ouverture
       setIsMenuOpen(true);
     }
+  };
+
+  const toggleMobileDropdown = (itemName: string) => {
+    setMobileDropdownOpen(mobileDropdownOpen === itemName ? null : itemName);
   };
 
   const navigation = [
@@ -148,81 +154,114 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {(isMenuOpen || isAnimating) && (
-          <div className={`lg:hidden fixed inset-0 z-50 bg-white ${isAnimating ? 'menu-slide-out' : 'menu-slide-in'}`}>
-            {/* Header with close button */}
-            <div className="flex justify-between items-center p-4 border-b border-gray-100 menu-content-fade">
-              <div className="flex items-center space-x-2">
-                <img 
-                  src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png"
-                  alt="Logo Maître Laura Baron"
-                  className="h-10 w-auto"
-                />
-                <div>
-                  <h1 className="text-sm font-semibold text-gray-900">Maître Laura Baron</h1>
-                  <p className="text-xs text-gray-600">Avocate - Dommage corporel</p>
+          <>
+            {/* Dark overlay to block background */}
+            <div className="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm" />
+
+            {/* Full screen mobile menu */}
+            <div className={`lg:hidden fixed inset-0 z-50 bg-white ${isAnimating ? 'menu-slide-out' : 'menu-slide-in'} flex flex-col h-full overflow-hidden`}>
+              {/* Fixed Header with close button */}
+              <div className="flex-shrink-0 flex justify-between items-center p-4 border-b border-gray-100 bg-white shadow-sm">
+                <div className="flex items-center space-x-2">
+                  <img
+                    src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png"
+                    alt="Logo Maître Laura Baron"
+                    className="h-10 w-auto"
+                  />
+                  <div>
+                    <h1 className="text-sm font-semibold text-gray-900">Maître Laura Baron</h1>
+                    <p className="text-xs text-gray-600">Avocate - Dommage corporel</p>
+                  </div>
                 </div>
+                <button
+                  onClick={handleMenuToggle}
+                  className="p-2 rounded-md text-gray-700 hover:text-amber-600 hover:bg-gray-100 transition-colors"
+                  aria-label="Fermer le menu"
+                >
+                  <X className="w-6 h-6" />
+                </button>
               </div>
-              <button
-                onClick={handleMenuToggle}
-                className="p-2 rounded-md text-gray-700 hover:text-amber-600"
-                aria-label="Fermer le menu"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
 
-            {/* Navigation menu */}
-            <div className="flex flex-col h-full menu-content-fade">
-              <nav className="flex-1 px-4 py-8">
-                <div className="space-y-1">
-                  {navigation.map((item) => (
-                    <div key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="menu-item-stagger block px-4 py-4 text-lg font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50 rounded-lg transition-all duration-200 border-b border-gray-100 last:border-b-0 hover:translate-x-2"
-                        onClick={handleMenuToggle}
-                      >
-                        {item.name}
-                      </Link>
-                      {item.dropdown && (
-                        <div className="ml-4 mt-2 space-y-1">
-                          {item.dropdown.map((dropdownItem) => (
-                            <Link
-                              key={dropdownItem.name}
-                              href={dropdownItem.href}
-                              className="block px-4 py-2 text-sm text-gray-600 hover:text-amber-600 hover:bg-gray-50 rounded-lg transition-colors"
-                              onClick={handleMenuToggle}
+              {/* Scrollable Navigation menu */}
+              <div className="flex-1 overflow-y-auto overscroll-contain">
+                <nav className="px-4 py-6">
+                  <div className="space-y-2">
+                    {navigation.map((item, index) => (
+                      <div key={item.name} className="menu-item-stagger" style={{ animationDelay: `${index * 0.1}s` }}>
+                        {item.dropdown ? (
+                          <>
+                            <button
+                              onClick={() => toggleMobileDropdown(item.name)}
+                              className="w-full flex items-center justify-between px-4 py-4 text-lg font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50 rounded-xl transition-all duration-200 border border-transparent hover:border-amber-200 hover:translate-x-1 hover:shadow-sm"
                             >
-                              • {dropdownItem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </nav>
+                              <span>{item.name}</span>
+                              <ChevronDown
+                                size={20}
+                                className={`transition-transform duration-200 ${
+                                  mobileDropdownOpen === item.name ? 'rotate-180' : ''
+                                }`}
+                              />
+                            </button>
+                            {mobileDropdownOpen === item.name && (
+                              <div className="ml-4 mt-3 space-y-2 animate-fade-in">
+                                <Link
+                                  href={item.href}
+                                  className="block px-4 py-3 text-base text-gray-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-all duration-200 border border-transparent hover:border-amber-200 hover:translate-x-1"
+                                  onClick={handleMenuToggle}
+                                >
+                                  <span className="text-amber-500 mr-2">•</span>
+                                  Vue d'ensemble
+                                </Link>
+                                {item.dropdown.map((dropdownItem, subIndex) => (
+                                  <Link
+                                    key={dropdownItem.name}
+                                    href={dropdownItem.href}
+                                    className="block px-4 py-3 text-base text-gray-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-all duration-200 border border-transparent hover:border-amber-200 hover:translate-x-1"
+                                    onClick={handleMenuToggle}
+                                    style={{ animationDelay: `${subIndex * 0.05}s` }}
+                                  >
+                                    <span className="text-amber-500 mr-2">•</span>
+                                    {dropdownItem.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                          <Link
+                            href={item.href}
+                            className="block px-4 py-4 text-lg font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50 rounded-xl transition-all duration-200 border border-transparent hover:border-amber-200 hover:translate-x-1 hover:shadow-sm"
+                            onClick={handleMenuToggle}
+                          >
+                            {item.name}
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </nav>
+              </div>
 
-              {/* Contact section at bottom */}
-              <div className="px-4 py-6 border-t border-gray-100 bg-gray-50 menu-content-fade">
+              {/* Fixed Contact section at bottom */}
+              <div className="flex-shrink-0 px-4 py-6 border-t border-gray-100 bg-gradient-to-r from-gray-50 to-beige/30">
                 <div className="space-y-4">
                   <a
                     href="tel:+33750234606"
-                    className="flex items-center justify-center space-x-3 bg-amber-600 text-white px-6 py-4 rounded-lg hover:bg-amber-700 hover:scale-105 transition-all duration-200 w-full"
+                    className="flex items-center justify-center space-x-3 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-6 py-4 rounded-xl hover:from-amber-700 hover:to-amber-800 transform hover:scale-105 transition-all duration-200 w-full shadow-lg"
                     onClick={handleMenuToggle}
                   >
                     <Phone className="w-5 h-5" />
                     <span className="font-medium">07 50 23 46 06</span>
                   </a>
-                  
+
                   <div className="text-center">
-                    <p className="text-sm text-gray-600 mb-2">Cabinets à Bayonne & Toulouse</p>
+                    <p className="text-sm text-gray-700 font-medium mb-1">Cabinets à Bayonne & Toulouse</p>
                     <p className="text-xs text-gray-500">Consultation sur rendez-vous</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </header>
