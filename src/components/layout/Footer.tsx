@@ -120,7 +120,7 @@ export default function Footer() {
                 <Facebook className="w-4.5 h-4.5 md:w-6 md:h-6 text-anthracite group-hover:text-white" />
               </a>
               <a
-                href="https://www.instagram.com/cabinet-laura-baron"
+                href="https://www.instagram.com/laura_baron_avocat/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 md:w-12 md:h-12 bg-beige hover:bg-or rounded-full flex items-center justify-center transition-colors group"
