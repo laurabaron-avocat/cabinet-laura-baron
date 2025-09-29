@@ -165,7 +165,7 @@ export default async function HomePage() {
       </section>
 
       {/* Domaines d'expertise */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-beige">
         <div className="container-custom no-overflow">
           <div className="text-center mb-16">
             <h2 className="mobile-title font-playfair font-bold text-noir mb-4 md:mb-6">
@@ -279,7 +279,7 @@ export default async function HomePage() {
       </section>
 
       {/* Section d'aide aux victimes */}
-      <section className="section-padding bg-beige">
+      <section className="section-padding bg-white">
         <div className="container-custom no-overflow">
           
           <div className="mobile-grid-2 md:grid-cols-2 gap-6 md:gap-12 mb-8 md:mb-12">
@@ -383,7 +383,7 @@ export default async function HomePage() {
       </section>
 
       {/* Preuves sociales */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-beige">
         <div className="container-custom no-overflow">
           <div className="text-center mb-12 md:mb-16 px-4">
             <h2 className="mobile-title font-playfair font-bold text-noir mb-4 md:mb-6">
@@ -423,7 +423,7 @@ export default async function HomePage() {
       </section>
 
       {/* Avis Google */}
-      <section className="section-padding bg-beige">
+      <section className="section-padding bg-white">
         <div className="container-custom no-overflow">
           <div className="text-center mb-12 md:mb-16 px-4">
             <div className="flex items-center justify-center space-x-4 mb-6">
@@ -626,7 +626,7 @@ export default async function HomePage() {
       </section>
 
       {/* Localisation Cabinet Bayonne */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-beige">
         <div className="container-custom no-overflow">
           <div className="text-center mb-12 md:mb-16 px-4">
             <h2 className="mobile-title font-playfair font-bold text-noir mb-4 md:mb-6">
