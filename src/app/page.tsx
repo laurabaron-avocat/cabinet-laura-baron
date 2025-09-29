@@ -207,7 +207,7 @@ export default async function HomePage() {
       </section>
 
       {/* Méthode en 3 étapes */}
-      <section className="section-padding bg-beige">
+      <section className="section-padding bg-white">
         <div className="container-custom no-overflow">
           <div className="mobile-grid-2 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
@@ -215,7 +215,7 @@ export default async function HomePage() {
                 Notre méthode éprouvée
               </h2>
               <p className="mobile-subtitle text-gray-700 mb-6 md:mb-8">
-                Une approche structurée et personnalisée pour optimiser votre indemnisation. 
+                Une approche structurée et personnalisée pour optimiser votre indemnisation.
                 Chaque dossier est unique et mérite une attention particulière.
               </p>
               <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-anthracite text-sm sm:text-base">
@@ -233,9 +233,46 @@ export default async function HomePage() {
                 </div>
               </div>
             </div>
-            
+
             <div>
               <Timeline steps={processSteps} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Citation statistiques - Design moderne */}
+      <section className="section-padding bg-gradient-to-br from-slate-50 to-gray-100 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-or/5 to-amber-200/10"></div>
+        <div className="container-custom no-overflow relative">
+          <div className="max-w-5xl mx-auto text-center">
+            {/* Grande guillemet d'ouverture */}
+            <div className="relative mb-8">
+              <svg className="w-16 h-16 md:w-20 md:h-20 text-or/30 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+              </svg>
+            </div>
+
+            {/* Citation principale */}
+            <blockquote className="text-center mb-8">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-playfair font-bold text-anthracite mb-6 leading-tight">
+                <span className="text-or">10%</span> seulement des victimes d'accident en France bénéficient d'une juste indemnisation.
+              </h2>
+              <p className="text-xl md:text-2xl lg:text-3xl font-medium text-gray-700 mb-8 leading-relaxed">
+                <span className="text-red-600 font-bold">90%</span> seront donc lésés, le plus souvent sans même en être conscients.
+              </p>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-lg border border-or/20">
+                <p className="text-lg md:text-xl text-anthracite leading-relaxed italic">
+                  Les <span className="font-bold text-or">10% de victimes correctement indemnisées</span> sont les victimes ayant su s'entourer d'un avocat en Droit du dommage corporel pour assurer la défense de leurs intérêts face aux compagnies d'assurance et aux organismes payeurs.
+                </p>
+              </div>
+            </blockquote>
+
+            {/* Grande guillemet de fermeture */}
+            <div className="relative mt-8">
+              <svg className="w-16 h-16 md:w-20 md:h-20 text-or/30 mx-auto rotate-180" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+              </svg>
             </div>
           </div>
         </div>
@@ -244,17 +281,6 @@ export default async function HomePage() {
       {/* Section d'aide aux victimes */}
       <section className="section-padding bg-beige">
         <div className="container-custom no-overflow">
-          <div className="text-center mb-8 md:mb-12 px-4">
-            <h2 className="mobile-title font-playfair font-bold mb-4 md:mb-6 text-noir">
-              « 10% seulement des victimes d'accident en France bénéficient d'une juste indemnisation.
-            </h2>
-            <p className="mobile-subtitle text-anthracite max-w-4xl mx-auto leading-relaxed">
-              90% seront donc lésés, le plus souvent sans même en être conscients.
-            </p>
-            <p className="mobile-subtitle text-anthracite max-w-4xl mx-auto leading-relaxed mt-4">
-              Les 10% de victimes correctement indemnisées sont les victimes ayant su s'entourer d'un avocat en Droit du dommage corporel pour assurer la défense de leurs intérêts face aux compagnies d'assurance et aux organismes payeurs. »
-            </p>
-          </div>
           
           <div className="mobile-grid-2 md:grid-cols-2 gap-6 md:gap-12 mb-8 md:mb-12">
             {/* Colonne gauche - Le problème */}
