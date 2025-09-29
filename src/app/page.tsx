@@ -246,12 +246,13 @@ export default async function HomePage() {
         <div className="container-custom no-overflow">
           <div className="text-center mb-8 md:mb-12 px-4">
             <h2 className="mobile-title font-playfair font-bold mb-4 md:mb-6 text-noir">
-              Sans avocat, vous risquez de perdre des milliers d'euros d'indemnisation
+              « 10% seulement des victimes d'accident en France bénéficient d'une juste indemnisation.
             </h2>
             <p className="mobile-subtitle text-anthracite max-w-4xl mx-auto leading-relaxed">
-              Les assurances proposent systématiquement des montants inférieurs à vos droits réels. 
-              <span className="text-or font-semibold"> Seul un avocat spécialisé peut révéler la vraie valeur de vos préjudices </span> 
-              et négocier l'indemnisation que vous méritez vraiment.
+              90% seront donc lésés, le plus souvent sans même en être conscients.
+            </p>
+            <p className="mobile-subtitle text-anthracite max-w-4xl mx-auto leading-relaxed mt-4">
+              Les 10% de victimes correctement indemnisées sont les victimes ayant su s'entourer d'un avocat en Droit du dommage corporel pour assurer la défense de leurs intérêts face aux compagnies d'assurance et aux organismes payeurs. »
             </p>
           </div>
           
