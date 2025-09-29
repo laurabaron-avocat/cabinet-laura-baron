@@ -658,7 +658,7 @@ export default async function HomePage() {
             
             {/* Informations du cabinet */}
             <div className="order-1 lg:order-2">
-              <div className="bg-beige p-6 md:p-8 rounded-sm">
+              <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg border border-gray-100">
                 <h3 className="text-xl md:text-2xl font-playfair font-semibold text-anthracite mb-4 md:mb-6">
                   Informations pratiques
                 </h3>
