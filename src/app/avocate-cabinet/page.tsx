@@ -92,7 +92,7 @@ export default function AvocateCabinetPage() {
             <div className="w-full max-w-sm mx-auto mb-6">
               <img
                 src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Maitre-Laura-Baron-Avocat-barreau-bayonne-specialiste-dommage-corporelle-accident-de-la-vie.jpg"
-                alt="Maître Laura Baron, avocat au Barreau de Bayonne, spécialisée en dommage corporel"
+                alt="Maître Laura Baron, avocat au Barreau de Bayonne, en dommage corporel"
                 className="w-full h-[28rem] object-cover object-top rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
                 loading="eager"
               />
@@ -181,7 +181,7 @@ export default function AvocateCabinetPage() {
                 <div className="mb-8 w-full max-w-md">
                   <img
                     src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Maitre-Laura-Baron-Avocat-barreau-bayonne-specialiste-dommage-corporelle-accident-de-la-vie.jpg"
-                    alt="Maître Laura Baron, avocat au Barreau de Bayonne, spécialisée en dommage corporel"
+                    alt="Maître Laura Baron, avocat au Barreau de Bayonne, en dommage corporel"
                     className="w-full h-[500px] lg:h-[600px] object-cover object-top rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
                     loading="eager"
                   />
