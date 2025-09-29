@@ -396,24 +396,24 @@ export default async function HomePage() {
           
           <div className="mobile-grid-3 md:grid-cols-3">
             <div className="text-center">
-              <div className="bg-beige w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Scale className="w-7 h-7 md:w-8 md:h-8 text-or" />
+              <div className="bg-gradient-to-br from-or/20 to-amber-100 w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg border-2 border-or/30">
+                <Scale className="w-9 h-9 md:w-11 md:h-11 text-or drop-shadow-sm" />
               </div>
               <h3 className="text-xl md:text-2xl font-playfair font-semibold mb-2">+10 ans</h3>
               <p className="text-gray-700 mobile-text">d'expérience en dommage corporel</p>
             </div>
             
             <div className="text-center">
-              <div className="bg-beige w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-7 h-7 md:w-8 md:h-8 text-or" />
+              <div className="bg-gradient-to-br from-green-100 to-emerald-50 w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg border-2 border-green-200">
+                <CheckCircle className="w-9 h-9 md:w-11 md:h-11 text-green-600 drop-shadow-sm" />
               </div>
               <h3 className="text-xl md:text-2xl font-playfair font-semibold mb-2">100%</h3>
               <p className="text-gray-700 mobile-text">de clients satisfaits</p>
             </div>
             
             <div className="text-center">
-              <div className="bg-beige w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-7 h-7 md:w-8 md:h-8 text-or" />
+              <div className="bg-gradient-to-br from-blue-100 to-sky-50 w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg border-2 border-blue-200">
+                <Users className="w-9 h-9 md:w-11 md:h-11 text-blue-600 drop-shadow-sm" />
               </div>
               <h3 className="text-xl md:text-2xl font-playfair font-semibold mb-2">500+</h3>
               <p className="text-gray-700 mobile-text">dossiers traités avec succès</p>
@@ -461,7 +461,7 @@ export default async function HomePage() {
           <div className="relative overflow-hidden -mx-4 px-4">
             <div className="flex animate-scroll space-x-4 md:space-x-6">
               {/* Avis 1 */}
-              <div className="flex-shrink-0 w-72 md:w-80 bg-white p-4 md:p-6 rounded-sm shadow-sm">
+              <div className="flex-shrink-0 w-72 md:w-80 bg-white p-4 md:p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-8 h-8 md:w-10 md:h-10 bg-or rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                     <span className="text-white font-semibold text-xs md:text-sm">BS</span>
@@ -484,7 +484,7 @@ export default async function HomePage() {
               </div>
               
               {/* Avis 2 */}
-              <div className="flex-shrink-0 w-72 md:w-80 bg-white p-4 md:p-6 rounded-sm shadow-sm">
+              <div className="flex-shrink-0 w-72 md:w-80 bg-white p-4 md:p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-8 h-8 md:w-10 md:h-10 bg-or rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                     <span className="text-white font-semibold text-xs md:text-sm">RL</span>
@@ -507,7 +507,7 @@ export default async function HomePage() {
               </div>
               
               {/* Avis 3 */}
-              <div className="flex-shrink-0 w-80 bg-white p-6 rounded-sm shadow-sm">
+              <div className="flex-shrink-0 w-80 bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-10 h-10 bg-or rounded-full flex items-center justify-center mr-3">
                     <span className="text-white font-semibold text-sm">LS</span>
@@ -530,7 +530,7 @@ export default async function HomePage() {
               </div>
               
               {/* Avis 4 */}
-              <div className="flex-shrink-0 w-80 bg-white p-6 rounded-sm shadow-sm">
+              <div className="flex-shrink-0 w-80 bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-10 h-10 bg-or rounded-full flex items-center justify-center mr-3">
                     <span className="text-white font-semibold text-sm">AD</span>
@@ -553,7 +553,7 @@ export default async function HomePage() {
               </div>
               
               {/* Avis 5 */}
-              <div className="flex-shrink-0 w-80 bg-white p-6 rounded-sm shadow-sm">
+              <div className="flex-shrink-0 w-80 bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-10 h-10 bg-or rounded-full flex items-center justify-center mr-3">
                     <span className="text-white font-semibold text-sm">YH</span>
@@ -576,7 +576,7 @@ export default async function HomePage() {
               </div>
               
               {/* Avis 6 */}
-              <div className="flex-shrink-0 w-80 bg-white p-6 rounded-sm shadow-sm">
+              <div className="flex-shrink-0 w-80 bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-10 h-10 bg-or rounded-full flex items-center justify-center mr-3">
                     <span className="text-white font-semibold text-sm">VK</span>
@@ -599,7 +599,7 @@ export default async function HomePage() {
               </div>
               
               {/* Répétition pour effet de boucle infinie */}
-              <div className="flex-shrink-0 w-80 bg-white p-6 rounded-sm shadow-sm">
+              <div className="flex-shrink-0 w-80 bg-white p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-center mb-4">
                   <div className="w-10 h-10 bg-or rounded-full flex items-center justify-center mr-3">
                     <span className="text-white font-semibold text-sm">BS</span>
@@ -658,64 +658,81 @@ export default async function HomePage() {
             
             {/* Informations du cabinet */}
             <div className="order-1 lg:order-2">
-              <div className="bg-beige p-6 md:p-8 rounded-sm">
-                <h3 className="text-xl md:text-2xl font-playfair font-semibold text-anthracite mb-4 md:mb-6">
+              <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-or/20">
+                <h3 className="text-xl md:text-2xl font-playfair font-semibold text-anthracite mb-6 md:mb-8 text-center">
                   Informations pratiques
                 </h3>
-                
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-anthracite text-sm md:text-base">Adresse</p>
-                      <a 
-                        href="https://www.google.com/maps/place/24+Av.+Mar%C3%A9chal+Foch,+64100+Bayonne,+France/data=!4m2!3m1!1s0xd51405ff1ec5af5:0x2a57843bc91ed1b0?sa=X&ved=1t:242&ictx=111"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-700 hover:text-or transition-colors cursor-pointer text-sm md:text-base"
-                      >
-                        24 Av. Maréchal Foch<br />64100 Bayonne, France
-                      </a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-3">
-                    <Phone className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-anthracite text-sm md:text-base">Téléphone</p>
-                      <a href="tel:+33750234606" className="text-gray-700 hover:text-or transition-colors text-sm md:text-base">
-                        07 50 23 46 06
-                      </a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-3">
-                    <Clock className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-anthracite text-sm md:text-base">Horaires</p>
-                      <div className="text-gray-700 text-sm">
-                        <p>Lundi - Jeudi : 9h - 18h</p>
-                        <p>Vendredi : 9h - 17h</p>
-                        <p className="text-or font-medium">Sur rendez-vous uniquement</p>
+
+                <div className="space-y-6">
+                  <div className="bg-gradient-to-r from-or/5 to-amber-50 p-4 rounded-lg border-l-4 border-or">
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-or/20 p-2 rounded-full">
+                        <MapPin className="w-5 h-5 md:w-6 md:h-6 text-or" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-anthracite text-base md:text-lg mb-2">Adresse</p>
+                        <a
+                          href="https://www.google.com/maps/place/24+Av.+Mar%C3%A9chal+Foch,+64100+Bayonne,+France/data=!4m2!3m1!1s0xd51405ff1ec5af5:0x2a57843bc91ed1b0?sa=X&ved=1t:242&ictx=111"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-700 hover:text-or transition-colors cursor-pointer text-sm md:text-base font-medium"
+                        >
+                          24 Av. Maréchal Foch<br />64100 Bayonne, France
+                        </a>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="flex items-start space-x-3">
-                    <Car className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-anthracite text-sm md:text-base">Accès</p>
-                      <div className="text-gray-700 text-sm">
-                        <p>• Parking public à proximité</p>
-                        <p>• Gare SNCF Bayonne (10 min à pied)</p>
-                        <p>• Aéroport Biarritz-Bayonne (15 min)</p>
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg border-l-4 border-green-500">
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-green-100 p-2 rounded-full">
+                        <Phone className="w-5 h-5 md:w-6 md:h-6 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-anthracite text-base md:text-lg mb-2">Téléphone</p>
+                        <a href="tel:+33750234606" className="text-gray-700 hover:text-green-600 transition-colors text-sm md:text-base font-medium">
+                          07 50 23 46 06
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-blue-50 to-sky-50 p-4 rounded-lg border-l-4 border-blue-500">
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-blue-100 p-2 rounded-full">
+                        <Clock className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-anthracite text-base md:text-lg mb-2">Horaires</p>
+                        <div className="text-gray-700 text-sm md:text-base space-y-1">
+                          <p>Lundi - Jeudi : 9h - 18h</p>
+                          <p>Vendredi : 9h - 17h</p>
+                          <p className="text-blue-600 font-semibold">Sur rendez-vous uniquement</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-purple-50 to-violet-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-purple-100 p-2 rounded-full">
+                        <Car className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-anthracite text-base md:text-lg mb-2">Accès</p>
+                        <div className="text-gray-700 text-sm md:text-base space-y-1">
+                          <p>• Parking public à proximité</p>
+                          <p>• Gare SNCF Bayonne (10 min à pied)</p>
+                          <p>• Aéroport Biarritz-Bayonne (15 min)</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="mt-6 pt-6 border-t border-gray-300">
-                  <Link href="/contact" className="btn-primary w-full text-center justify-center">
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  <Link href="/contact" className="bg-gradient-to-r from-or to-amber-500 hover:from-amber-500 hover:to-or text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg w-full text-center justify-center inline-flex items-center shadow-md">
+                    <Phone className="w-5 h-5 mr-2" />
                     Prendre rendez-vous
                   </Link>
                 </div>
