@@ -126,7 +126,7 @@ export default async function HomePage() {
                   <span className="text-or block mt-2">notre expertise à votre service</span>
                 </h1>
                 <p className="mobile-subtitle text-anthracite mb-6 md:mb-8 leading-relaxed">
-                  Avocat spécialisé en <strong>dommage corporel</strong> et indemnisation des victimes. 
+                  Avocate en <strong>dommage corporel</strong> et indemnisation des victimes.
                   Plus de 10 ans d'expérience pour obtenir la juste réparation de vos préjudices.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 md:mb-8">
