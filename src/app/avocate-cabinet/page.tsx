@@ -214,53 +214,6 @@ export default function AvocateCabinetPage() {
         </div>
       </section>
 
-      {/* Parcours détaillé */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-playfair font-bold text-noir mb-12 text-center">
-              Parcours et formation
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div>
-                <h3 className="text-xl font-playfair font-semibold mb-4 text-anthracite">
-                  Formation académique
-                </h3>
-                <div className="space-y-4">
-                  <div className="border-l-4 border-or pl-4">
-                    <p className="font-medium">[Année] - [Diplôme]</p>
-                    <p className="text-gray-700 text-sm">[Université/École - À compléter]</p>
-                  </div>
-                  <div className="border-l-4 border-or pl-4">
-                    <p className="font-medium">[Année] - [Diplôme]</p>
-                    <p className="text-gray-700 text-sm">[Université/École - À compléter]</p>
-                  </div>
-                  <div className="border-l-4 border-or pl-4">
-                    <p className="font-medium">2013 - Serment d'avocat</p>
-                    <p className="text-gray-700 text-sm">Barreau de Bayonne</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-playfair font-semibold mb-4 text-anthracite">
-                  Expérience professionnelle
-                </h3>
-                <div className="space-y-4">
-                  <div className="border-l-4 border-beige pl-4">
-                    <p className="font-medium">2013 - Aujourd'hui</p>
-                    <p className="text-gray-700 text-sm">
-                      [À compléter : parcours professionnel, spécialisation progressive 
-                      en dommage corporel, expériences marquantes]
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Valeurs et méthode */}
       <section className="section-padding bg-beige">
