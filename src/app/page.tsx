@@ -659,15 +659,17 @@ export default async function HomePage() {
             {/* Informations du cabinet */}
             <div className="order-1 lg:order-2">
               <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg border border-gray-100">
-                <h3 className="text-xl md:text-2xl font-playfair font-semibold text-anthracite mb-4 md:mb-6">
+                <h3 className="text-xl md:text-2xl font-playfair font-semibold text-anthracite mb-4 md:mb-6 text-center">
                   Informations pratiques
                 </h3>
 
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
+                <div className="space-y-4 text-center">
+                  <div className="flex flex-col items-center space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <MapPin className="w-4.5 h-4.5 md:w-5 md:h-5 text-or flex-shrink-0" />
+                      <p className="font-bold text-anthracite text-sm md:text-base">Adresse</p>
+                    </div>
                     <div>
-                      <p className="font-medium text-anthracite text-sm md:text-base">Adresse</p>
                       <a
                         href="https://www.google.com/maps/place/24+Av.+Mar%C3%A9chal+Foch,+64100+Bayonne,+France/data=!4m2!3m1!1s0xd51405ff1ec5af5:0x2a57843bc91ed1b0?sa=X&ved=1t:242&ictx=111"
                         target="_blank"
@@ -679,21 +681,25 @@ export default async function HomePage() {
                     </div>
                   </div>
                   
-                  <div className="flex items-start space-x-3">
-                    <Phone className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
+                  <div className="flex flex-col items-center space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Phone className="w-4.5 h-4.5 md:w-5 md:h-5 text-or flex-shrink-0" />
+                      <p className="font-bold text-anthracite text-sm md:text-base">Téléphone</p>
+                    </div>
                     <div>
-                      <p className="font-medium text-anthracite text-sm md:text-base">Téléphone</p>
                       <a href="tel:+33750234606" className="text-gray-700 hover:text-or transition-colors text-sm md:text-base">
                         07 50 23 46 06
                       </a>
                     </div>
                   </div>
                   
-                  <div className="flex items-start space-x-3">
-                    <Clock className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
+                  <div className="flex flex-col items-center space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Clock className="w-4.5 h-4.5 md:w-5 md:h-5 text-or flex-shrink-0" />
+                      <p className="font-bold text-anthracite text-sm md:text-base">Horaires</p>
+                    </div>
                     <div>
-                      <p className="font-medium text-anthracite text-sm md:text-base">Horaires</p>
-                      <div className="text-gray-700 text-sm">
+                      <div className="text-gray-700 text-sm text-center">
                         <p>Lundi - Jeudi : 9h - 18h</p>
                         <p>Vendredi : 9h - 17h</p>
                         <p className="text-or font-medium">Sur rendez-vous uniquement</p>
@@ -701,11 +707,13 @@ export default async function HomePage() {
                     </div>
                   </div>
                   
-                  <div className="flex items-start space-x-3">
-                    <Car className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
+                  <div className="flex flex-col items-center space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Car className="w-4.5 h-4.5 md:w-5 md:h-5 text-or flex-shrink-0" />
+                      <p className="font-bold text-anthracite text-sm md:text-base">Accès</p>
+                    </div>
                     <div>
-                      <p className="font-medium text-anthracite text-sm md:text-base">Accès</p>
-                      <div className="text-gray-700 text-sm">
+                      <div className="text-gray-700 text-sm text-center">
                         <p>• Parking public à proximité</p>
                         <p>• Gare SNCF Bayonne (10 min à pied)</p>
                         <p>• Aéroport Biarritz-Bayonne (15 min)</p>
@@ -714,7 +722,7 @@ export default async function HomePage() {
                   </div>
                 </div>
                 
-                <div className="mt-6 pt-6 border-t border-gray-300">
+                <div className="mt-6 pt-6 border-t border-or/30">
                   <Link href="/contact" className="btn-primary w-full text-center justify-center">
                     Prendre rendez-vous
                   </Link>
