@@ -658,81 +658,64 @@ export default async function HomePage() {
             
             {/* Informations du cabinet */}
             <div className="order-1 lg:order-2">
-              <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-or/20">
-                <h3 className="text-xl md:text-2xl font-playfair font-semibold text-anthracite mb-6 md:mb-8 text-center">
+              <div className="bg-beige p-6 md:p-8 rounded-sm">
+                <h3 className="text-xl md:text-2xl font-playfair font-semibold text-anthracite mb-4 md:mb-6">
                   Informations pratiques
                 </h3>
 
-                <div className="space-y-6">
-                  <div className="bg-gradient-to-r from-or/5 to-amber-50 p-4 rounded-lg border-l-4 border-or">
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-or/20 p-2 rounded-full">
-                        <MapPin className="w-5 h-5 md:w-6 md:h-6 text-or" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-anthracite text-base md:text-lg mb-2">Adresse</p>
-                        <a
-                          href="https://www.google.com/maps/place/24+Av.+Mar%C3%A9chal+Foch,+64100+Bayonne,+France/data=!4m2!3m1!1s0xd51405ff1ec5af5:0x2a57843bc91ed1b0?sa=X&ved=1t:242&ictx=111"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-700 hover:text-or transition-colors cursor-pointer text-sm md:text-base font-medium"
-                        >
-                          24 Av. Maréchal Foch<br />64100 Bayonne, France
-                        </a>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <MapPin className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium text-anthracite text-sm md:text-base">Adresse</p>
+                      <a
+                        href="https://www.google.com/maps/place/24+Av.+Mar%C3%A9chal+Foch,+64100+Bayonne,+France/data=!4m2!3m1!1s0xd51405ff1ec5af5:0x2a57843bc91ed1b0?sa=X&ved=1t:242&ictx=111"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-700 hover:text-or transition-colors cursor-pointer text-sm md:text-base"
+                      >
+                        24 Av. Maréchal Foch<br />64100 Bayonne, France
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <Phone className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium text-anthracite text-sm md:text-base">Téléphone</p>
+                      <a href="tel:+33750234606" className="text-gray-700 hover:text-or transition-colors text-sm md:text-base">
+                        07 50 23 46 06
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <Clock className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium text-anthracite text-sm md:text-base">Horaires</p>
+                      <div className="text-gray-700 text-sm">
+                        <p>Lundi - Jeudi : 9h - 18h</p>
+                        <p>Vendredi : 9h - 17h</p>
+                        <p className="text-or font-medium">Sur rendez-vous uniquement</p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg border-l-4 border-green-500">
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-green-100 p-2 rounded-full">
-                        <Phone className="w-5 h-5 md:w-6 md:h-6 text-green-600" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-anthracite text-base md:text-lg mb-2">Téléphone</p>
-                        <a href="tel:+33750234606" className="text-gray-700 hover:text-green-600 transition-colors text-sm md:text-base font-medium">
-                          07 50 23 46 06
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gradient-to-r from-blue-50 to-sky-50 p-4 rounded-lg border-l-4 border-blue-500">
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-blue-100 p-2 rounded-full">
-                        <Clock className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-anthracite text-base md:text-lg mb-2">Horaires</p>
-                        <div className="text-gray-700 text-sm md:text-base space-y-1">
-                          <p>Lundi - Jeudi : 9h - 18h</p>
-                          <p>Vendredi : 9h - 17h</p>
-                          <p className="text-blue-600 font-semibold">Sur rendez-vous uniquement</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gradient-to-r from-purple-50 to-violet-50 p-4 rounded-lg border-l-4 border-purple-500">
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-purple-100 p-2 rounded-full">
-                        <Car className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-anthracite text-base md:text-lg mb-2">Accès</p>
-                        <div className="text-gray-700 text-sm md:text-base space-y-1">
-                          <p>• Parking public à proximité</p>
-                          <p>• Gare SNCF Bayonne (10 min à pied)</p>
-                          <p>• Aéroport Biarritz-Bayonne (15 min)</p>
-                        </div>
+                  <div className="flex items-start space-x-3">
+                    <Car className="w-4.5 h-4.5 md:w-5 md:h-5 text-or mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium text-anthracite text-sm md:text-base">Accès</p>
+                      <div className="text-gray-700 text-sm">
+                        <p>• Parking public à proximité</p>
+                        <p>• Gare SNCF Bayonne (10 min à pied)</p>
+                        <p>• Aéroport Biarritz-Bayonne (15 min)</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                  <Link href="/contact" className="bg-gradient-to-r from-or to-amber-500 hover:from-amber-500 hover:to-or text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg w-full text-center justify-center inline-flex items-center shadow-md">
-                    <Phone className="w-5 h-5 mr-2" />
+                <div className="mt-6 pt-6 border-t border-gray-300">
+                  <Link href="/contact" className="btn-primary w-full text-center justify-center">
                     Prendre rendez-vous
                   </Link>
                 </div>
