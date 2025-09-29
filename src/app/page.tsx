@@ -172,7 +172,7 @@ export default async function HomePage() {
               Nos domaines d'expertise
             </h2>
             <p className="mobile-subtitle text-gray-700 max-w-3xl mx-auto px-4">
-              Spécialisée en dommage corporel, je vous accompagne dans toutes les étapes 
+              Avocate en dommage corporel, je vous accompagne dans toutes les étapes
               de votre indemnisation, quel que soit l'origine de vos préjudices.
             </p>
           </div>
