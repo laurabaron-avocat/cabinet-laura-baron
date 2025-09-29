@@ -111,7 +111,7 @@ export default function Footer() {
             </h4>
             <div className="flex justify-center space-x-4 md:space-x-6">
               <a
-                href="https://www.facebook.com/cabinet-laura-baron"
+                href="https://www.facebook.com/baron.avocats"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 md:w-12 md:h-12 bg-beige hover:bg-or rounded-full flex items-center justify-center transition-colors group"
