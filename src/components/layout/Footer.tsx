@@ -129,7 +129,7 @@ export default function Footer() {
                 <Instagram className="w-4.5 h-4.5 md:w-6 md:h-6 text-anthracite group-hover:text-white" />
               </a>
               <a
-                href="https://www.linkedin.com/in/laura-baron-avocat"
+                href="https://www.linkedin.com/in/laura-baron-a3a22b43/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 md:w-12 md:h-12 bg-beige hover:bg-or rounded-full flex items-center justify-center transition-colors group"
