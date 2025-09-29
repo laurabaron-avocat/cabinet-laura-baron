@@ -722,8 +722,8 @@ export default async function HomePage() {
                   </div>
                 </div>
                 
-                <div className="mt-6 pt-6 border-t border-or/30">
-                  <Link href="/contact" className="btn-primary w-full text-center justify-center">
+                <div className="mt-6 pt-6 border-t border-or/30 text-center">
+                  <Link href="/contact" className="btn-primary inline-flex items-center justify-center">
                     Prendre rendez-vous
                   </Link>
                 </div>
