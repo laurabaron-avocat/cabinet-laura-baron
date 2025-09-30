@@ -4,13 +4,12 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
-import type { Database } from '../src/lib/supabase';
 
 // Configuration Supabase (à remplir avec vos vraies clés)
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-const supabase = createClient<Database>(supabaseUrl, supabaseServiceKey);
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 // Définition des catégories et tags à créer
 const CATEGORIES = [
