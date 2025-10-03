@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FileText, Clock, ArrowRight } from 'lucide-react';
+import { Clock, ArrowRight } from 'lucide-react';
 import type { Database } from '@/lib/supabase';
 
 type Post = Database['public']['Tables']['posts']['Row'] & {
@@ -37,12 +37,6 @@ export default function ArticleCard({ post, className = '' }: ArticleCardProps) 
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           loading="lazy"
         />
-        <div className="absolute top-4 left-4">
-          <span className="inline-flex items-center px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium text-anthracite rounded-full border border-or/20">
-            <FileText size={12} className="mr-1 text-or" />
-            Article
-          </span>
-        </div>
         {/* Badge catégorie si disponible */}
         {post.category_slug && (
           <div className="absolute top-4 right-4">
