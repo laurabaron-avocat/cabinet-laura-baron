@@ -47,8 +47,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center">
                 <Mail className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
-                <a href="mailto:contact@cabinet-baron.fr" className="hover:text-or transition-colors">
-                  contact@cabinet-baron.fr
+                <a href="mailto:laurabaron.avocat@gmail.com" className="hover:text-or transition-colors">
+                  laurabaron.avocat@gmail.com
                 </a>
               </div>
               <div className="flex items-start">

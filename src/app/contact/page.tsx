@@ -29,7 +29,7 @@ export default function ContactPage() {
         longitude: -1.4748,
       },
       telephone: '+33559123456',
-      email: 'contact@cabinet-baron.fr',
+      email: 'laurabaron.avocat@gmail.com',
       openingHours: ['Mo-Fr 09:00-18:00'],
       priceRange: 'Consultation sur rendez-vous',
     },
@@ -40,7 +40,7 @@ export default function ContactPage() {
       description: 'Avocat spécialisé en dommage corporel et indemnisation des victimes',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '[Adresse à compléter]',
+        streetAddress: 'Centre ville de toulouse, place du capitole',
         addressLocality: 'Toulouse',
         postalCode: '31000',
         addressCountry: 'FR',
@@ -51,7 +51,7 @@ export default function ContactPage() {
         longitude: 1.4437,
       },
       telephone: '+33561123456',
-      email: 'contact@cabinet-baron.fr',
+      email: 'laurabaron.avocat@gmail.com',
       openingHours: ['Mo-Fr 09:00-18:00'],
       priceRange: 'Consultation sur rendez-vous',
     },
@@ -60,7 +60,7 @@ export default function ContactPage() {
       '@type': 'ContactPoint',
       contactType: 'customer service',
       telephone: '+33559123456',
-      email: 'contact@cabinet-baron.fr',
+      email: 'laurabaron.avocat@gmail.com',
       availableLanguage: ['French'],
       areaServed: ['Nouvelle-Aquitaine', 'Occitanie'],
     },
@@ -147,8 +147,8 @@ export default function ContactPage() {
                 
                 <div className="flex items-center space-x-3">
                   <Mail size={20} className="text-or flex-shrink-0" />
-                  <a href="mailto:contact@cabinet-baron.fr" className="text-anthracite hover:text-or transition-colors">
-                    contact@cabinet-baron.fr
+                  <a href="mailto:laurabaron.avocat@gmail.com" className="text-anthracite hover:text-or transition-colors">
+                    laurabaron.avocat@gmail.com
                   </a>
                 </div>
                 
@@ -194,7 +194,7 @@ export default function ContactPage() {
                 <div className="flex items-start space-x-3">
                   <MapPin size={20} className="text-or mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-anthracite">[Adresse complète à compléter]</p>
+                    <p className="font-medium text-anthracite">Centre ville de toulouse, place du capitole</p>
                     <p className="text-gray-700">31000 Toulouse</p>
                   </div>
                 </div>
@@ -208,8 +208,8 @@ export default function ContactPage() {
                 
                 <div className="flex items-center space-x-3">
                   <Mail size={20} className="text-or flex-shrink-0" />
-                  <a href="mailto:contact@cabinet-baron.fr" className="text-anthracite hover:text-or transition-colors">
-                    contact@cabinet-baron.fr
+                  <a href="mailto:laurabaron.avocat@gmail.com" className="text-anthracite hover:text-or transition-colors">
+                    laurabaron.avocat@gmail.com
                   </a>
                 </div>
                 

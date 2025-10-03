@@ -65,7 +65,7 @@ export default function AccidentsRoutePage() {
             </div>
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/5217848/pexels-photo-5217848.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Blog/accident-voiture-demarches-blesses-avocat-laura-baron.webp"
                 alt="Accident de la route - Expertise juridique"
                 className="w-full h-96 object-cover rounded-lg shadow-xl"
               />

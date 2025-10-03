@@ -52,8 +52,8 @@ export default function AccidentsViePage() {
             <div className="relative">
               <div className="relative bg-white p-8 rounded-2xl shadow-xl">
                 <img
-                  src="https://images.pexels.com/photos/4386465/pexels-photo-4386465.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Sécurité et prévention dans la vie quotidienne"
+                  src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Tribunal-judiciaire-bayonne-jugement-indemnisation-expertise-medicale-indemnites-avocate-maitre-baron-laura.webp"
+                  alt="Tribunal judiciaire Bayonne - Indemnisation accidents de la vie"
                   className="w-full h-64 object-cover rounded-lg"
                 />
                 <div className="absolute -top-4 -right-4 bg-or text-white p-3 rounded-full">

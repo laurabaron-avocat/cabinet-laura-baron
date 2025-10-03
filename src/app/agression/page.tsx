@@ -497,8 +497,8 @@ export default function AgressionPage() {
 
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/8363525/pexels-photo-8363525.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Accompagnement bienveillant des victimes"
+                src="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Maitre-Laura-Baron-Avocat-bayonne-rendez-vous-dommage-corporelle-accident-de-la-route.webp"
+                alt="Maître Laura Baron - Accompagnement bienveillant des victimes"
                 className="w-full h-96 object-cover rounded-2xl shadow-lg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
