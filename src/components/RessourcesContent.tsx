@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Search, BookOpen, FileText, Users, Calendar, Tag, ArrowRight, Clock, User } from 'lucide-react';
 import type { Database } from '@/lib/supabase';
+import { getPostCountsByCategory } from '@/lib/queries';
 
 type Post = Database['public']['Tables']['posts']['Row'] & {
   authors?: {
@@ -18,6 +19,8 @@ type Post = Database['public']['Tables']['posts']['Row'] & {
       slug: string;
     };
   }>;
+  category_slug?: string;
+  tags?: string[];
 };
 
 type Category = Database['public']['Tables']['categories']['Row'];
@@ -41,6 +44,10 @@ export default function RessourcesContent({
   const displayRecentPosts = initialRecentPosts.slice(0, 6);
   const categories = initialCategories;
   const tags = initialTags;
+
+  // Calculer les compteurs de catégories
+  const allPosts = [...initialFeaturedPosts, ...initialRecentPosts];
+  const categoryCounts = getPostCountsByCategory(allPosts);
 
   return (
     <>
@@ -228,18 +235,25 @@ export default function RessourcesContent({
                   Catégories
                 </h3>
                 <div className="space-y-2">
-                  {categories && categories.length > 0 ? categories.map((category) => (
-                    <Link
-                      key={category.id}
-                      href={`/ressources/categorie/${category.slug}`}
-                      className="flex items-center justify-between py-2 px-3 rounded hover:bg-gray-50 transition-colors"
-                    >
-                      <span className="text-gray-700">{category.name}</span>
-                      <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                        0
-                      </span>
-                    </Link>
-                  )) : (
+                  {categories && categories.length > 0 ? categories.map((category) => {
+                    const count = categoryCounts[category.slug] || 0;
+                    return (
+                      <Link
+                        key={category.id}
+                        href={`/ressources/categorie/${category.slug}`}
+                        className="flex items-center justify-between py-2 px-3 rounded hover:bg-gray-50 transition-colors"
+                      >
+                        <span className="text-gray-700">{category.name}</span>
+                        <span className={`text-xs px-2 py-1 rounded ${
+                          count > 0
+                            ? 'text-or bg-or/10 border border-or/20'
+                            : 'text-gray-500 bg-gray-100'
+                        }`}>
+                          {count}
+                        </span>
+                      </Link>
+                    );
+                  }) : (
                     <p className="text-gray-600 text-sm">Aucune catégorie disponible.</p>
                   )}
                 </div>

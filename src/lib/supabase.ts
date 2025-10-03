@@ -56,6 +56,8 @@ export type Database = {
           seo_description: string | null;
           lang: string;
           author_id: string;
+          category_slug?: string | null;
+          tags?: string[] | null;
         };
         Insert: {
           slug: string;

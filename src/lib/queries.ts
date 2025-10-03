@@ -7,6 +7,58 @@ type FAQ = Database['public']['Tables']['faq']['Row'];
 type Category = Database['public']['Tables']['categories']['Row'];
 type Tag = Database['public']['Tables']['tags']['Row'];
 
+// Article mapping to simulate category_slug and tags
+const ARTICLE_CATEGORY_MAPPING: Record<string, { category_slug: string; tags: string[] }> = {
+  'accidents-route-responsabilite-dommage-corporel-guide-2025': {
+    category_slug: 'accidents-route',
+    tags: ['loi-badinter', 'responsabilite-civile', 'indemnisation', 'assurance']
+  },
+  'preparer-expertise-medicale-accident-guide-2025': {
+    category_slug: 'procedures-indemnisation',
+    tags: ['expertise-medicale', 'bareme-dintilhac', 'prejudices-corporels']
+  },
+  'accident-de-voiture-que-faire-etape-par-etape': {
+    category_slug: 'accidents-route',
+    tags: ['loi-badinter', 'responsabilite-civile', 'conseils-pratiques']
+  },
+  'accident-de-voiture-demarches-pour-blesses': {
+    category_slug: 'accidents-route',
+    tags: ['loi-badinter', 'indemnisation', 'victimes']
+  },
+  'accident-conducteur-non-assure-que-faire-guide-2025': {
+    category_slug: 'procedures-indemnisation',
+    tags: ['assurance', 'indemnisation', 'responsabilite-civile']
+  },
+  'itt-vs-ipp-incapacites-dommage-corporel-guide-2025': {
+    category_slug: 'procedures-indemnisation',
+    tags: ['itt', 'ipp', 'expertise-medicale', 'bareme-dintilhac']
+  },
+  'delais-indemnisation-accident-voiture-guide-2025': {
+    category_slug: 'procedures-indemnisation',
+    tags: ['indemnisation', 'delais', 'assurance']
+  },
+  'qui-paye-mes-soins-apres-un-accident-de-la-route': {
+    category_slug: 'procedures-indemnisation',
+    tags: ['soins', 'remboursement', 'assurance', 'loi-badinter']
+  },
+  'accidents-medicaux-cci-oniam-expertise-medicale': {
+    category_slug: 'accidents-medicaux',
+    tags: ['cci', 'oniam', 'expertise-medicale', 'accidents-medicaux']
+  },
+  'indemnisation-passagers-victimes-accidents-route': {
+    category_slug: 'procedures-indemnisation',
+    tags: ['passagers', 'victimes', 'indemnisation', 'loi-badinter']
+  },
+  'accidents-vie-responsabilite-civile-assurances-guide-2025': {
+    category_slug: 'accidents-vie',
+    tags: ['responsabilite-civile', 'indemnisation', 'assurance']
+  },
+  'agression-victimes-infractions-solidarite-nationale-civi': {
+    category_slug: 'agressions-civi',
+    tags: ['civi', 'indemnisation', 'victimes', 'agression']
+  }
+};
+
 // Posts queries
 export async function getPosts(limit?: number) {
   if (!supabase || !isConfigured) {
@@ -47,7 +99,17 @@ export async function getPosts(limit?: number) {
       return [];
     }
 
-    return data || [];
+    // Enrichir avec les données de mapping
+    const enrichedData = (data || []).map(post => {
+      const mapping = ARTICLE_CATEGORY_MAPPING[post.slug];
+      return {
+        ...post,
+        category_slug: mapping?.category_slug || 'conseils-pratiques',
+        tags: mapping?.tags || ['dommage-corporel']
+      };
+    });
+
+    return enrichedData;
   } catch (fetchError) {
     console.error('Network error fetching posts:', fetchError);
     return [];
@@ -89,7 +151,15 @@ export async function getPostBySlug(slug: string) {
       return null;
     }
 
-    return data;
+    // Enrichir avec les données de mapping
+    const mapping = ARTICLE_CATEGORY_MAPPING[data.slug];
+    const enrichedData = {
+      ...data,
+      category_slug: mapping?.category_slug || 'conseils-pratiques',
+      tags: mapping?.tags || ['dommage-corporel']
+    };
+
+    return enrichedData;
   } catch (fetchError) {
     console.error('Network error fetching post by slug:', fetchError);
     return null;
@@ -175,6 +245,19 @@ export async function getTags() {
     console.error('Network error fetching tags:', fetchError);
     return [];
   }
+}
+
+// Helper function to count posts by category
+export function getPostCountsByCategory(posts: any[]): Record<string, number> {
+  const counts: Record<string, number> = {};
+
+  posts.forEach(post => {
+    const mapping = ARTICLE_CATEGORY_MAPPING[post.slug];
+    const categorySlug = mapping?.category_slug || 'conseils-pratiques';
+    counts[categorySlug] = (counts[categorySlug] || 0) + 1;
+  });
+
+  return counts;
 }
 
 export async function submitContactForm(formData: {
