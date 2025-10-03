@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { Search, BookOpen, Tag } from 'lucide-react';
+import { Search, BookOpen, Tag, ChevronDown, ChevronUp } from 'lucide-react';
 import type { Database } from '@/lib/supabase';
 import { getPostCountsByCategory } from '@/lib/queries';
 import ArticleCard from '@/components/ui/ArticleCard';
@@ -46,6 +46,8 @@ export default function RessourcesContent({
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [showAllCategories, setShowAllCategories] = useState(false);
+  const [showAllTags, setShowAllTags] = useState(false);
 
   // Configuration pagination
   const ARTICLES_PER_PAGE = 9;
@@ -249,7 +251,7 @@ export default function RessourcesContent({
       {/* Sidebar */}
       <section className="section-padding bg-beige">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Categories */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-lg font-playfair font-semibold text-anthracite mb-4 flex items-center">
@@ -257,25 +259,47 @@ export default function RessourcesContent({
                 Catégories
               </h3>
               <div className="space-y-2">
-                {initialCategories && initialCategories.length > 0 ? initialCategories.map((category) => {
-                  const count = categoryCounts[category.slug] || 0;
-                  return (
-                    <button
-                      key={category.id}
-                      onClick={() => handleCategoryChange(category.slug)}
-                      className="flex items-center justify-between w-full py-2 px-3 rounded hover:bg-gray-50 transition-colors text-left"
-                    >
-                      <span className="text-gray-700">{category.name}</span>
-                      <span className={`text-xs px-2 py-1 rounded ${
-                        count > 0
-                          ? 'text-or bg-or/10 border border-or/20'
-                          : 'text-gray-500 bg-gray-100'
-                      }`}>
-                        {count}
-                      </span>
-                    </button>
-                  );
-                }) : (
+                {initialCategories && initialCategories.length > 0 ? (
+                  <>
+                    {initialCategories
+                      .filter(category => (categoryCounts[category.slug] || 0) > 0)
+                      .slice(0, showAllCategories ? undefined : 4)
+                      .map((category) => {
+                        const count = categoryCounts[category.slug] || 0;
+                        return (
+                          <button
+                            key={category.id}
+                            onClick={() => handleCategoryChange(category.slug)}
+                            className="flex items-center justify-between w-full py-2 px-3 rounded hover:bg-gray-50 transition-colors text-left"
+                          >
+                            <span className="text-gray-700">{category.name}</span>
+                            <span className="text-xs text-or bg-or/10 border border-or/20 px-2 py-1 rounded">
+                              {count}
+                            </span>
+                          </button>
+                        );
+                      })
+                    }
+                    {initialCategories.filter(category => (categoryCounts[category.slug] || 0) > 0).length > 4 && (
+                      <button
+                        onClick={() => setShowAllCategories(!showAllCategories)}
+                        className="flex items-center justify-center w-full py-2 px-3 text-or hover:bg-or/5 rounded transition-colors text-sm font-medium"
+                      >
+                        {showAllCategories ? (
+                          <>
+                            <ChevronUp size={16} className="mr-1" />
+                            Voir moins
+                          </>
+                        ) : (
+                          <>
+                            <ChevronDown size={16} className="mr-1" />
+                            Voir plus ({initialCategories.filter(category => (categoryCounts[category.slug] || 0) > 0).length - 4} autres)
+                          </>
+                        )}
+                      </button>
+                    )}
+                  </>
+                ) : (
                   <p className="text-gray-600 text-sm">Aucune catégorie disponible.</p>
                 )}
               </div>
@@ -288,43 +312,87 @@ export default function RessourcesContent({
                 Tags populaires
               </h3>
               <div className="flex flex-wrap gap-2">
-                {initialTags && initialTags.length > 0 ? initialTags.slice(0, 10).map((tag) => (
-                  <button
-                    key={tag.id}
-                    onClick={() => handleSearchChange(tag.name)}
-                    className="text-xs text-gray-700 bg-gray-100 hover:bg-or hover:text-white px-3 py-2 rounded transition-colors"
-                  >
-                    {tag.name}
-                  </button>
-                )) : (
+                {initialTags && initialTags.length > 0 ? (
+                  <>
+                    {initialTags
+                      .slice(0, showAllTags ? undefined : 4)
+                      .map((tag) => (
+                        <button
+                          key={tag.id}
+                          onClick={() => handleSearchChange(tag.name)}
+                          className="text-xs text-gray-700 bg-gray-100 hover:bg-or hover:text-white px-3 py-2 rounded transition-colors"
+                        >
+                          {tag.name}
+                        </button>
+                      ))
+                    }
+                    {initialTags.length > 4 && (
+                      <button
+                        onClick={() => setShowAllTags(!showAllTags)}
+                        className="text-xs text-or hover:bg-or hover:text-white px-3 py-2 rounded border border-or transition-colors font-medium"
+                      >
+                        {showAllTags ? 'Voir moins' : `+${initialTags.length - 4} autres`}
+                      </button>
+                    )}
+                  </>
+                ) : (
                   <p className="text-gray-600 text-sm">Aucun tag disponible.</p>
                 )}
               </div>
             </div>
 
-            {/* Newsletter */}
-            <div className="lg:col-span-2 bg-noir text-white p-6 rounded-lg">
+            {/* Newsletter - taille réduite et repositionnée */}
+            <div className="bg-noir text-white p-6 rounded-lg">
               <h3 className="text-lg font-playfair font-semibold mb-4">
                 Newsletter juridique
               </h3>
               <p className="text-gray-300 text-sm mb-4">
                 Recevez nos derniers guides et actualités en dommage corporel directement dans votre boîte mail.
               </p>
-              <form className="flex gap-3">
+              <form className="space-y-3">
                 <input
                   type="email"
                   placeholder="Votre adresse email"
-                  className="flex-1 px-3 py-2 rounded text-noir"
+                  className="w-full px-3 py-2 rounded text-noir"
                   required
                 />
                 <button
                   type="submit"
-                  className="bg-or hover:bg-yellow-600 text-noir py-2 px-6 rounded font-medium transition-colors whitespace-nowrap"
+                  className="w-full bg-or hover:bg-yellow-600 text-noir py-2 px-4 rounded font-medium transition-colors"
                 >
                   S'abonner
                 </button>
               </form>
               <p className="text-xs text-gray-400 mt-2">
+                Pas de spam, désinscription à tout moment.
+              </p>
+            </div>
+          </div>
+
+          {/* Newsletter centrée en dessous pour mobile */}
+          <div className="lg:hidden mt-8 max-w-md mx-auto">
+            <div className="bg-noir text-white p-6 rounded-lg">
+              <h3 className="text-lg font-playfair font-semibold mb-4 text-center">
+                Newsletter juridique
+              </h3>
+              <p className="text-gray-300 text-sm mb-4 text-center">
+                Recevez nos derniers guides et actualités en dommage corporel directement dans votre boîte mail.
+              </p>
+              <form className="space-y-3">
+                <input
+                  type="email"
+                  placeholder="Votre adresse email"
+                  className="w-full px-3 py-2 rounded text-noir"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="w-full bg-or hover:bg-yellow-600 text-noir py-2 px-4 rounded font-medium transition-colors"
+                >
+                  S'abonner
+                </button>
+              </form>
+              <p className="text-xs text-gray-400 mt-2 text-center">
                 Pas de spam, désinscription à tout moment.
               </p>
             </div>
