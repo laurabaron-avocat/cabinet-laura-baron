@@ -14,15 +14,13 @@ export const revalidate = 60;
 export default async function RessourcesPage() {
   // Récupérer les données depuis Supabase
   try {
-    const [featuredPosts, recentPosts, categories, tags] = await Promise.all([
-      getFeaturedPosts(3),
-      getPosts(6),
+    const [allPosts, categories, tags] = await Promise.all([
+      getPosts(), // Récupérer TOUS les articles sans limite
       getCategories(),
       getTags()
     ]);
 
-    console.log('Featured posts:', featuredPosts?.length || 0);
-    console.log('Recent posts:', recentPosts?.length || 0);
+    console.log('All posts:', allPosts?.length || 0);
     console.log('Categories:', categories?.length || 0);
     console.log('Tags:', tags?.length || 0);
 
@@ -50,8 +48,8 @@ export default async function RessourcesPage() {
         />
 
         <RessourcesContent
-          initialFeaturedPosts={featuredPosts || []}
-          initialRecentPosts={recentPosts || []}
+          initialFeaturedPosts={allPosts || []}
+          initialRecentPosts={allPosts || []}
           initialCategories={categories || []}
           initialTags={tags || []}
         />
