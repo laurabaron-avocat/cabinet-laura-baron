@@ -1,9 +1,12 @@
 'use client';
 
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { Search, BookOpen, FileText, Users, Calendar, Tag, ArrowRight, Clock, User } from 'lucide-react';
+import { Search, BookOpen, Tag } from 'lucide-react';
 import type { Database } from '@/lib/supabase';
 import { getPostCountsByCategory } from '@/lib/queries';
+import ArticleCard from '@/components/ui/ArticleCard';
+import Pagination from '@/components/ui/Pagination';
 
 type Post = Database['public']['Tables']['posts']['Row'] & {
   authors?: {
@@ -39,15 +42,67 @@ export default function RessourcesContent({
   initialCategories,
   initialTags,
 }: RessourcesContentProps) {
-  // Utilisation directe des données sans hooks Realtime pour éviter erreurs React
-  const displayFeaturedPosts = initialFeaturedPosts.slice(0, 3);
-  const displayRecentPosts = initialRecentPosts.slice(0, 6);
-  const categories = initialCategories;
-  const tags = initialTags;
+  // États pour la pagination et la recherche
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  // Configuration pagination
+  const ARTICLES_PER_PAGE = 9;
+
+  // Combinaison de tous les articles
+  const allPosts = useMemo(() => {
+    const combined = [...initialFeaturedPosts, ...initialRecentPosts];
+    // Supprimer les doublons basés sur l'ID
+    const uniquePosts = combined.filter((post, index, arr) =>
+      arr.findIndex(p => p.id === post.id) === index
+    );
+    return uniquePosts.sort((a, b) =>
+      new Date(b.published_at || '').getTime() - new Date(a.published_at || '').getTime()
+    );
+  }, [initialFeaturedPosts, initialRecentPosts]);
+
+  // Filtrage des articles
+  const filteredPosts = useMemo(() => {
+    let filtered = allPosts;
+
+    // Filtrage par recherche
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(post =>
+        post.title.toLowerCase().includes(query) ||
+        post.excerpt.toLowerCase().includes(query) ||
+        post.tags?.some(tag => tag.toLowerCase().includes(query))
+      );
+    }
+
+    // Filtrage par catégorie
+    if (selectedCategory) {
+      filtered = filtered.filter(post => post.category_slug === selectedCategory);
+    }
+
+    return filtered;
+  }, [allPosts, searchQuery, selectedCategory]);
+
+  // Pagination
+  const totalPages = Math.ceil(filteredPosts.length / ARTICLES_PER_PAGE);
+  const startIndex = (currentPage - 1) * ARTICLES_PER_PAGE;
+  const endIndex = startIndex + ARTICLES_PER_PAGE;
+  const currentArticles = filteredPosts.slice(startIndex, endIndex);
 
   // Calculer les compteurs de catégories
-  const allPosts = [...initialFeaturedPosts, ...initialRecentPosts];
   const categoryCounts = getPostCountsByCategory(allPosts);
+
+  // Réinitialiser la page lors du changement de filtres
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
+  const handleCategoryChange = (category: string | null) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
 
   return (
     <>
@@ -69,6 +124,8 @@ export default function RessourcesContent({
                   <Search size={20} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <input
                     type="text"
+                    value={searchQuery}
+                    onChange={(e) => handleSearchChange(e.target.value)}
                     placeholder="Rechercher un guide, une notion juridique..."
                     className="w-full pl-12 pr-4 py-4 rounded-sm border border-gray-300 focus:ring-2 focus:ring-or focus:border-transparent"
                   />
@@ -85,227 +142,191 @@ export default function RessourcesContent({
         </div>
       </section>
 
-      {/* Featured Posts */}
+      {/* Filtres rapides */}
+      {initialCategories.length > 0 && (
+        <section className="section-padding bg-gray-50">
+          <div className="container-custom">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-playfair font-bold text-noir mb-4">
+                Parcourir par catégorie
+              </h2>
+            </div>
+            <div className="flex flex-wrap justify-center gap-3">
+              <button
+                onClick={() => handleCategoryChange(null)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  selectedCategory === null
+                    ? 'bg-or text-white'
+                    : 'bg-white text-gray-700 border border-gray-300 hover:border-or hover:text-or'
+                }`}
+              >
+                Tous les articles ({allPosts.length})
+              </button>
+              {initialCategories.map((category) => {
+                const count = categoryCounts[category.slug] || 0;
+                if (count === 0) return null;
+                return (
+                  <button
+                    key={category.id}
+                    onClick={() => handleCategoryChange(category.slug)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      selectedCategory === category.slug
+                        ? 'bg-or text-white'
+                        : 'bg-white text-gray-700 border border-gray-300 hover:border-or hover:text-or'
+                    }`}
+                  >
+                    {category.name} ({count})
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Articles avec pagination */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-playfair font-bold text-noir mb-6">
-              Guides à la une
+              {selectedCategory
+                ? `Articles - ${initialCategories.find(c => c.slug === selectedCategory)?.name || selectedCategory}`
+                : searchQuery
+                ? `Résultats de recherche pour "${searchQuery}"`
+                : 'Tous nos articles'
+              }
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Les ressources essentielles pour comprendre le dommage corporel et l'indemnisation
+              {filteredPosts.length} article{filteredPosts.length > 1 ? 's' : ''} trouvé{filteredPosts.length > 1 ? 's' : ''}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayFeaturedPosts && displayFeaturedPosts.length > 0 ? displayFeaturedPosts.map((post) => (
-              <article key={post.id} className="group bg-white rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-or/20">
-                <div className="relative aspect-video bg-gradient-to-br from-beige to-gray-200 overflow-hidden">
-                  <img
-                    src={post.cover_url || 'https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=800'}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="inline-flex items-center px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium text-anthracite rounded-full border border-or/20">
-                      <FileText size={12} className="mr-1 text-or" />
-                      Article
-                    </span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center text-xs text-gray-500">
-                      <Clock size={12} className="mr-1" />
-                      <span>5 min</span>
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {post.published_at ? new Date(post.published_at).toLocaleDateString('fr-FR') : ''}
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-playfair font-semibold text-anthracite mb-3 line-clamp-2 group-hover:text-or transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-700 text-sm mb-4 line-clamp-3 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-wrap gap-1">
-                      {post.post_tags?.slice(0, 2).map((postTag: any) => (
-                        <span key={postTag.tags.id} className="text-xs text-gray-600 bg-beige/60 px-2 py-1 rounded-full border border-gray-200">
-                          {postTag.tags.name}
-                        </span>
-                      ))}
-                    </div>
-                    <Link
-                      href={`/ressources/${post.slug}`}
-                      className="inline-flex items-center text-or hover:text-yellow-600 text-sm font-medium group-hover:translate-x-1 transition-transform"
-                    >
-                      Lire
-                      <ArrowRight size={14} className="ml-1" />
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            )) : (
-              <div className="col-span-full text-center py-12">
-                <p className="text-gray-600">Aucun article disponible pour le moment.</p>
-                <p className="text-sm text-gray-500 mt-2">
-                  Les articles seront bientôt disponibles.
-                </p>
+          {currentArticles.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {currentArticles.map((post) => (
+                  <ArticleCard key={post.id} post={post} />
+                ))}
               </div>
-            )}
-          </div>
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="mt-12">
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                  />
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-600 text-lg">Aucun article trouvé.</p>
+              <p className="text-sm text-gray-500 mt-2">
+                {searchQuery || selectedCategory
+                  ? 'Essayez de modifier vos critères de recherche.'
+                  : 'Les articles seront bientôt disponibles.'
+                }
+              </p>
+              {(searchQuery || selectedCategory) && (
+                <button
+                  onClick={() => {
+                    setSearchQuery('');
+                    setSelectedCategory(null);
+                    setCurrentPage(1);
+                  }}
+                  className="mt-4 px-4 py-2 bg-or text-white rounded-lg hover:bg-yellow-600 transition-colors"
+                >
+                  Voir tous les articles
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Recent Posts & Sidebar */}
+      {/* Sidebar */}
       <section className="section-padding bg-beige">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Recent Posts */}
-            <div className="lg:col-span-2">
-              <h2 className="text-2xl font-playfair font-bold text-noir mb-8">
-                Articles récents
-              </h2>
-              <div className="space-y-6">
-                {displayRecentPosts && displayRecentPosts.length > 0 ? displayRecentPosts.map((post) => (
-                  <article key={post.id} className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-or/20">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center space-x-3">
-                        <span className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-beige to-or/10 text-xs font-medium text-anthracite rounded-full border border-or/20">
-                          <FileText size={12} className="mr-1 text-or" />
-                          Article
-                        </span>
-                        {post.post_tags && post.post_tags.length > 0 && (
-                          <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
-                            {post.post_tags[0].tags.name}
-                          </span>
-                        )}
-                      </div>
-                      <div className="flex items-center text-xs text-gray-500 space-x-3">
-                        <div className="flex items-center">
-                          <Calendar size={12} className="mr-1" />
-                          <span>{new Date(post.published_at || '').toLocaleDateString('fr-FR')}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Clock size={12} className="mr-1" />
-                          <span>5 min</span>
-                        </div>
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-playfair font-semibold text-anthracite mb-3 group-hover:text-or transition-colors">
-                      <Link href={`/ressources/${post.slug}`} className="hover:text-or transition-colors">
-                        {post.title}
-                      </Link>
-                    </h3>
-                    <p className="text-gray-700 mb-4 leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center text-xs text-gray-500">
-                        <User size={12} className="mr-1" />
-                        <span>Maître Laura Baron</span>
-                      </div>
-                      <Link
-                        href={`/ressources/${post.slug}`}
-                        className="inline-flex items-center text-or hover:text-yellow-600 text-sm font-medium group-hover:translate-x-1 transition-transform"
-                      >
-                        Lire l'article complet
-                        <ArrowRight size={14} className="ml-1" />
-                      </Link>
-                    </div>
-                  </article>
-                )) : (
-                  <div className="bg-white p-6 rounded-sm shadow-sm text-center">
-                    <p className="text-gray-600">Aucun article récent disponible.</p>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            {/* Categories */}
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-lg font-playfair font-semibold text-anthracite mb-4 flex items-center">
+                <BookOpen size={20} className="mr-2 text-or" />
+                Catégories
+              </h3>
+              <div className="space-y-2">
+                {initialCategories && initialCategories.length > 0 ? initialCategories.map((category) => {
+                  const count = categoryCounts[category.slug] || 0;
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => handleCategoryChange(category.slug)}
+                      className="flex items-center justify-between w-full py-2 px-3 rounded hover:bg-gray-50 transition-colors text-left"
+                    >
+                      <span className="text-gray-700">{category.name}</span>
+                      <span className={`text-xs px-2 py-1 rounded ${
+                        count > 0
+                          ? 'text-or bg-or/10 border border-or/20'
+                          : 'text-gray-500 bg-gray-100'
+                      }`}>
+                        {count}
+                      </span>
+                    </button>
+                  );
+                }) : (
+                  <p className="text-gray-600 text-sm">Aucune catégorie disponible.</p>
                 )}
               </div>
             </div>
 
-            {/* Sidebar */}
-            <div className="space-y-8">
-              {/* Categories */}
-              <div className="bg-white p-6 rounded-sm shadow-sm">
-                <h3 className="text-lg font-playfair font-semibold text-anthracite mb-4 flex items-center">
-                  <BookOpen size={20} className="mr-2 text-or" />
-                  Catégories
-                </h3>
-                <div className="space-y-2">
-                  {categories && categories.length > 0 ? categories.map((category) => {
-                    const count = categoryCounts[category.slug] || 0;
-                    return (
-                      <Link
-                        key={category.id}
-                        href={`/ressources/categorie/${category.slug}`}
-                        className="flex items-center justify-between py-2 px-3 rounded hover:bg-gray-50 transition-colors"
-                      >
-                        <span className="text-gray-700">{category.name}</span>
-                        <span className={`text-xs px-2 py-1 rounded ${
-                          count > 0
-                            ? 'text-or bg-or/10 border border-or/20'
-                            : 'text-gray-500 bg-gray-100'
-                        }`}>
-                          {count}
-                        </span>
-                      </Link>
-                    );
-                  }) : (
-                    <p className="text-gray-600 text-sm">Aucune catégorie disponible.</p>
-                  )}
-                </div>
-              </div>
-
-              {/* Popular Tags */}
-              <div className="bg-white p-6 rounded-sm shadow-sm">
-                <h3 className="text-lg font-playfair font-semibold text-anthracite mb-4 flex items-center">
-                  <Tag size={20} className="mr-2 text-or" />
-                  Tags populaires
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {tags && tags.length > 0 ? tags.slice(0, 10).map((tag) => (
-                    <Link
-                      key={tag.id}
-                      href={`/ressources/tag/${tag.slug}`}
-                      className="text-xs text-gray-700 bg-gray-100 hover:bg-or hover:text-white px-3 py-2 rounded transition-colors"
-                    >
-                      {tag.name}
-                    </Link>
-                  )) : (
-                    <p className="text-gray-600 text-sm">Aucun tag disponible.</p>
-                  )}
-                </div>
-              </div>
-
-              {/* Newsletter */}
-              <div className="bg-noir text-white p-6 rounded-sm">
-                <h3 className="text-lg font-playfair font-semibold mb-4">
-                  Newsletter juridique
-                </h3>
-                <p className="text-gray-300 text-sm mb-4">
-                  Recevez nos derniers guides et actualités en dommage corporel directement dans votre boîte mail.
-                </p>
-                <form className="space-y-3">
-                  <input
-                    type="email"
-                    placeholder="Votre adresse email"
-                    className="w-full px-3 py-2 rounded text-noir"
-                    required
-                  />
+            {/* Popular Tags */}
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-lg font-playfair font-semibold text-anthracite mb-4 flex items-center">
+                <Tag size={20} className="mr-2 text-or" />
+                Tags populaires
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {initialTags && initialTags.length > 0 ? initialTags.slice(0, 10).map((tag) => (
                   <button
-                    type="submit"
-                    className="w-full bg-or hover:bg-yellow-600 text-noir py-2 px-4 rounded font-medium transition-colors"
+                    key={tag.id}
+                    onClick={() => handleSearchChange(tag.name)}
+                    className="text-xs text-gray-700 bg-gray-100 hover:bg-or hover:text-white px-3 py-2 rounded transition-colors"
                   >
-                    S'abonner
+                    {tag.name}
                   </button>
-                </form>
-                <p className="text-xs text-gray-400 mt-2">
-                  Pas de spam, désinscription à tout moment.
-                </p>
+                )) : (
+                  <p className="text-gray-600 text-sm">Aucun tag disponible.</p>
+                )}
               </div>
+            </div>
+
+            {/* Newsletter */}
+            <div className="lg:col-span-2 bg-noir text-white p-6 rounded-lg">
+              <h3 className="text-lg font-playfair font-semibold mb-4">
+                Newsletter juridique
+              </h3>
+              <p className="text-gray-300 text-sm mb-4">
+                Recevez nos derniers guides et actualités en dommage corporel directement dans votre boîte mail.
+              </p>
+              <form className="flex gap-3">
+                <input
+                  type="email"
+                  placeholder="Votre adresse email"
+                  className="flex-1 px-3 py-2 rounded text-noir"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="bg-or hover:bg-yellow-600 text-noir py-2 px-6 rounded font-medium transition-colors whitespace-nowrap"
+                >
+                  S'abonner
+                </button>
+              </form>
+              <p className="text-xs text-gray-400 mt-2">
+                Pas de spam, désinscription à tout moment.
+              </p>
             </div>
           </div>
         </div>
