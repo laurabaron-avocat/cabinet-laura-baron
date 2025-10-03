@@ -117,7 +117,7 @@ export default async function DommageCorporelPage() {
                 </div>
                 <div className="mt-6 pt-4 border-t border-gray-200">
                   <Link
-                    href="/ressources/accidents-route-responsabilite-dommage-corporel-guide-2025"
+                    href="/accidents-route"
                     className="inline-flex items-center text-or hover:text-yellow-600 font-medium transition-colors"
                   >
                     En savoir plus
@@ -168,7 +168,7 @@ export default async function DommageCorporelPage() {
                 </div>
                 <div className="mt-6 pt-4 border-t border-gray-200">
                   <Link
-                    href="/ressources/accidents-medicaux-indemnisation-guide"
+                    href="/accidents-medicaux"
                     className="inline-flex items-center text-or hover:text-yellow-600 font-medium transition-colors"
                   >
                     En savoir plus
@@ -219,7 +219,7 @@ export default async function DommageCorporelPage() {
                 </div>
                 <div className="mt-6 pt-4 border-t border-gray-200">
                   <Link
-                    href="/ressources/agression-civi-indemnisation-victimes"
+                    href="/agression"
                     className="inline-flex items-center text-or hover:text-yellow-600 font-medium transition-colors"
                   >
                     En savoir plus
@@ -270,7 +270,7 @@ export default async function DommageCorporelPage() {
                 </div>
                 <div className="mt-6 pt-4 border-t border-gray-200">
                   <Link
-                    href="/ressources/accidents-de-la-vie-responsabilite-indemnisation"
+                    href="/accidents-vie"
                     className="inline-flex items-center text-or hover:text-yellow-600 font-medium transition-colors"
                   >
                     En savoir plus

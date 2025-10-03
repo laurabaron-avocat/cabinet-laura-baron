@@ -50,10 +50,10 @@ export default function Header() {
       name: 'Dommage corporel',
       href: '/dommage-corporel',
       dropdown: [
-        { name: 'Accidents de la route', href: '/dommage-corporel#accidents-route' },
-        { name: 'Accidents médicaux', href: '/dommage-corporel#accidents-medicaux' },
-        { name: 'Agression', href: '/dommage-corporel#agressions' },
-        { name: 'Accidents de la vie', href: '/dommage-corporel#accidents-vie' },
+        { name: 'Accidents de la route', href: '/accidents-route' },
+        { name: 'Accidents médicaux', href: '/accidents-medicaux' },
+        { name: 'Agression', href: '/agression' },
+        { name: 'Accidents de la vie', href: '/accidents-vie' },
       ]
     },
     { name: 'Indemnisation', href: '/indemnisation-victimes' },
