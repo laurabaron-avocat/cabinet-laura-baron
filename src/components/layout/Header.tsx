@@ -91,7 +91,7 @@ export default function Header() {
                       onMouseLeave={() => setIsDropdownOpen(false)}
                     >
                       {item.name}
-                      <ChevronDown size={16} className="ml-1" />
+                      <ChevronDown size={16} className="ml-1" style={{ transform: 'translateY(2mm)' }} />
                     </button>
                     <div
                       className="absolute left-0 top-full mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
