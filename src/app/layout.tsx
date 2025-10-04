@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import CookieConsent from '@/components/ui/CookieConsent';
 import OrganizationSchema from '@/components/seo/OrganizationSchema';
+import WebsiteSchema from '@/components/seo/WebsiteSchema';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -70,6 +71,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <OrganizationSchema />
+        <WebsiteSchema />
         <Header />
         <main>{children}</main>
         <Footer />
