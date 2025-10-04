@@ -251,7 +251,7 @@ export default function RessourcesContent({
       {/* Sidebar */}
       <section className="section-padding bg-beige">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Categories */}
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-lg font-playfair font-semibold text-anthracite mb-4 flex items-center">
@@ -341,32 +341,6 @@ export default function RessourcesContent({
               </div>
             </div>
 
-            {/* Newsletter - taille réduite et repositionnée */}
-            <div className="bg-noir text-white p-6 rounded-lg">
-              <h3 className="text-lg font-playfair font-semibold mb-4">
-                Newsletter juridique
-              </h3>
-              <p className="text-gray-300 text-sm mb-4">
-                Recevez nos derniers guides et actualités en dommage corporel directement dans votre boîte mail.
-              </p>
-              <form className="space-y-3">
-                <input
-                  type="email"
-                  placeholder="Votre adresse email"
-                  className="w-full px-3 py-2 rounded text-noir"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="w-full bg-or hover:bg-yellow-600 text-noir py-2 px-4 rounded font-medium transition-colors"
-                >
-                  S'abonner
-                </button>
-              </form>
-              <p className="text-xs text-gray-400 mt-2">
-                Pas de spam, désinscription à tout moment.
-              </p>
-            </div>
           </div>
 
           {/* Newsletter centrée en dessous pour mobile */}
