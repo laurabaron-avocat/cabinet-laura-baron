@@ -3,6 +3,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import CookieConsent from '@/components/ui/CookieConsent';
+import OrganizationSchema from '@/components/seo/OrganizationSchema';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -68,6 +69,7 @@ export default function RootLayout({
         <link rel="manifest" href="https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Favicon/site.webmanifest" />
       </head>
       <body className="antialiased">
+        <OrganizationSchema />
         <Header />
         <main>{children}</main>
         <Footer />
