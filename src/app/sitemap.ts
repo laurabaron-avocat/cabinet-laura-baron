@@ -1,9 +1,11 @@
 import { MetadataRoute } from 'next';
+import { supabase } from '@/lib/supabase';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://laurabaron-avocat.com';
-  
-  return [
+
+  // Pages statiques
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -65,4 +67,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
   ];
+
+  // Articles dynamiques depuis Supabase
+  let articlePages: MetadataRoute.Sitemap = [];
+
+  if (supabase) {
+    try {
+      const { data: posts, error } = await supabase
+        .from('posts')
+        .select('slug, updated_at, published_at')
+        .eq('status', 'published')
+        .order('published_at', { ascending: false });
+
+      if (!error && posts) {
+        articlePages = posts.map((post) => ({
+          url: `${baseUrl}/ressources/${post.slug}`,
+          lastModified: new Date(post.updated_at || post.published_at || new Date()),
+          changeFrequency: 'monthly' as const,
+          priority: 0.7,
+        }));
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération des articles pour le sitemap:', error);
+    }
+  }
+
+  // Combiner pages statiques + articles
+  return [...staticPages, ...articlePages];
 }
