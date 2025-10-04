@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/', '/_next/'],
     },
-    sitemap: 'https://maitre-laura-baron.fr/sitemap.xml',
+    sitemap: 'https://laurabaron-avocat.com/sitemap.xml',
   };
 }

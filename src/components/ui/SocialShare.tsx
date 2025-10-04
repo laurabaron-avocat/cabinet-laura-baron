@@ -37,7 +37,7 @@ const WhatsAppIcon = () => (
 export default function SocialShare({ title, excerpt, url }: SocialShareProps) {
   const [copied, setCopied] = useState(false);
 
-  const shareText = `${title} - ${excerpt} Par Maître Laura Baron, avocat spécialisé en dommage corporel.`;
+  const shareText = `${title} - ${excerpt} Par Maître Laura Baron, avocat en dommage corporel.`;
   const encodedText = encodeURIComponent(shareText);
   const encodedUrl = encodeURIComponent(url);
 

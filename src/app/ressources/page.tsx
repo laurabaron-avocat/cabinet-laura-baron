@@ -28,8 +28,8 @@ export default async function RessourcesPage() {
       '@context': 'https://schema.org',
       '@type': 'Blog',
       name: 'Ressources Juridiques - Dommage Corporel',
-      description: 'Blog juridique spécialisé en dommage corporel et indemnisation des victimes',
-      url: 'https://maitre-laura-baron.fr/ressources',
+      description: 'Blog juridique en dommage corporel et indemnisation des victimes',
+      url: 'https://laurabaron-avocat.com/ressources',
       author: {
         '@type': 'Person',
         name: 'Maître Laura Baron',

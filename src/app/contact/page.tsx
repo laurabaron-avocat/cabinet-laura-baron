@@ -6,7 +6,7 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 
 export const metadata: Metadata = {
   title: 'Contact • Prendre Rendez-vous avec Maître Laura Baron',
-  description: 'Contactez Maître Laura Baron, avocat spécialisé en dommage corporel. Cabinets à Bayonne et Toulouse. Consultation sur rendez-vous, urgences acceptées.',
+  description: 'Contactez Maître Laura Baron, avocat en dommage corporel. Cabinets à Bayonne et Toulouse. Consultation sur rendez-vous, urgences acceptées.',
 };
 
 export default function ContactPage() {
@@ -15,7 +15,7 @@ export default function ContactPage() {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
       name: 'Cabinet Maître Laura Baron - Bayonne',
-      description: 'Avocat spécialisé en dommage corporel et indemnisation des victimes',
+      description: 'Avocat en dommage corporel et indemnisation des victimes',
       address: {
         '@type': 'PostalAddress',
         streetAddress: '24 Av. Maréchal Foch',
@@ -37,7 +37,7 @@ export default function ContactPage() {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
       name: 'Cabinet Maître Laura Baron - Toulouse',
-      description: 'Avocat spécialisé en dommage corporel et indemnisation des victimes',
+      description: 'Avocat en dommage corporel et indemnisation des victimes',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Centre ville de toulouse, place du capitole',

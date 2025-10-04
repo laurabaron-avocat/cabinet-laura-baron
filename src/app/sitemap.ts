@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://maitre-laura-baron.fr';
+  const baseUrl = 'https://laurabaron-avocat.com';
   
   return [
     {

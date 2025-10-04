@@ -89,7 +89,7 @@ export default async function ArticlePage({ params }: PageProps) {
     dateModified: post.updated_at,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://maitre-laura-baron.fr/ressources/${post.slug}`,
+      '@id': `https://laurabaron-avocat.com/ressources/${post.slug}`,
     },
     image: post.cover_url || undefined,
   };
@@ -258,7 +258,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 <SocialShare
                   title={post.title}
                   excerpt={post.excerpt}
-                  url={`https://maitre-laura-baron.fr/ressources/${post.slug}`}
+                  url={`https://laurabaron-avocat.com/ressources/${post.slug}`}
                 />
               </div>
 

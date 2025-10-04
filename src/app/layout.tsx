@@ -10,16 +10,16 @@ export const metadata: Metadata = {
     default: 'Maître Laura Baron • Avocat Dommage Corporel | Bayonne & Toulouse',
     template: '%s | Maître Laura Baron • Avocat',
   },
-  description: 'Avocat spécialisé en dommage corporel et indemnisation des victimes. Accidents de la route (Loi Badinter), accidents médicaux (CCI/ONIAM), agressions (CIVI). Bayonne & Toulouse.',
+  description: 'Avocat en dommage corporel et indemnisation des victimes. Accidents de la route (Loi Badinter), accidents médicaux (CCI/ONIAM), agressions (CIVI). Bayonne & Toulouse.',
   keywords: ['avocat', 'dommage corporel', 'indemnisation', 'accident', 'Bayonne', 'Toulouse', 'Loi Badinter', 'CIVI', 'CCI', 'ONIAM'],
   authors: [{ name: 'Maître Laura Baron' }],
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://maitre-laura-baron.fr',
+    url: 'https://laurabaron-avocat.com',
     siteName: 'Maître Laura Baron - Avocat',
     title: 'Maître Laura Baron • Avocat Dommage Corporel | Bayonne & Toulouse',
-    description: 'Avocat spécialisé en dommage corporel et indemnisation des victimes. Expertise en accidents de la route, médicaux, agressions. Bayonne & Toulouse.',
+    description: 'Avocat en dommage corporel et indemnisation des victimes. Expertise en accidents de la route, médicaux, agressions. Bayonne & Toulouse.',
     images: [
       {
         url: 'https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Maître Laura Baron • Avocat Dommage Corporel',
-    description: 'Avocat spécialisé en dommage corporel et indemnisation des victimes. Bayonne & Toulouse.',
+    description: 'Avocat en dommage corporel et indemnisation des victimes. Bayonne & Toulouse.',
     images: ['https://qncljsxdjefkimfxdzuf.supabase.co/storage/v1/object/public/images/Logo-laura-baron-maitre-avocat-bayonne.png'],
   },
   robots: {

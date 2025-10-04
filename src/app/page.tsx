@@ -34,8 +34,8 @@ export default async function HomePage() {
     '@context': 'https://schema.org',
     '@type': ['LegalService', 'LocalBusiness'],
     name: 'Maître Laura Baron',
-    description: 'Avocat spécialisé en dommage corporel et indemnisation des victimes',
-    url: 'https://maitre-laura-baron.fr',
+    description: 'Avocat en dommage corporel et indemnisation des victimes',
+    url: 'https://laurabaron-avocat.com',
     telephone: '+33XXXxxxXXX',
     address: [
       {

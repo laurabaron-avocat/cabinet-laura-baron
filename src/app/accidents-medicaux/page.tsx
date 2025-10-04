@@ -5,7 +5,7 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 
 export const metadata: Metadata = {
   title: 'Accidents Médicaux • Indemnisation Erreur Médicale • Maître Laura Baron',
-  description: 'Spécialiste en indemnisation d\'accidents médicaux. Erreurs de diagnostic, infections nosocomiales, défaut d\'information. Expertise juridique dédiée aux victimes.',
+  description: 'Expert en indemnisation d\'accidents médicaux. Erreurs de diagnostic, infections nosocomiales, défaut d\'information. Expertise juridique dédiée aux victimes.',
   keywords: 'accident médical, erreur médicale, infection nosocomiale, responsabilité médicale, indemnisation, expert médical',
 };
 

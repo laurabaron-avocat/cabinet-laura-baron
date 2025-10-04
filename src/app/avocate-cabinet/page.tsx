@@ -4,7 +4,7 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 
 export const metadata: Metadata = {
   title: 'Présentation de Maître Laura Baron • Avocat Dommage Corporel',
-  description: 'Découvrez le parcours et l\'expertise de Maître Laura Baron, avocat spécialisé en dommage corporel. Inscrite au Barreau de Bayonne depuis 2013.',
+  description: 'Découvrez le parcours et l\'expertise de Maître Laura Baron, avocat en dommage corporel. Inscrite au Barreau de Bayonne depuis 2013.',
 };
 
 export default function AvocateCabinetPage() {
@@ -42,7 +42,7 @@ export default function AvocateCabinetPage() {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'Cabinet Maître Laura Baron',
-      description: 'Cabinet d\'avocat spécialisé en dommage corporel et indemnisation des victimes',
+      description: 'Cabinet d\'avocat en dommage corporel et indemnisation des victimes',
       founder: 'Maître Laura Baron',
       foundingDate: '2013',
       legalName: 'Cabinet Maître Laura Baron',
@@ -83,7 +83,7 @@ export default function AvocateCabinetPage() {
                 Maître Laura Baron
               </h1>
               <p className="text-lg text-anthracite mb-6 leading-relaxed px-4">
-                Avocat spécialisé en dommage corporel, je mets mon expertise au service
+                Avocat en dommage corporel, je mets mon expertise au service
                 des victimes d'accidents pour obtenir une juste indemnisation de leurs préjudices.
               </p>
             </div>
@@ -142,7 +142,7 @@ export default function AvocateCabinetPage() {
                   Maître Laura Baron
                 </h1>
               <p className="text-xl text-anthracite mb-8 leading-relaxed">
-                Avocat spécialisé en dommage corporel, je mets mon expertise au service
+                Avocat en dommage corporel, je mets mon expertise au service
                 des victimes d'accidents pour obtenir une juste indemnisation de leurs préjudices.
               </p>
               <div className="grid grid-cols-2 gap-4 text-sm mb-8">

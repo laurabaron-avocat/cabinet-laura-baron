@@ -25,7 +25,7 @@ export default function AccidentsRoutePage() {
     datePublished: new Date().toISOString(),
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://maitre-laura-baron.fr/accidents-route',
+      '@id': 'https://laurabaron-avocat.com/accidents-route',
     },
   };
 

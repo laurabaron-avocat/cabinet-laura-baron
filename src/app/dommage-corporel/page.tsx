@@ -7,7 +7,7 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 
 export const metadata: Metadata = {
   title: 'Dommage Corporel • Expertise en Indemnisation des Victimes',
-  description: 'Avocat spécialisé en dommage corporel : accidents de la route (Loi Badinter), accidents médicaux (CCI/ONIAM), agressions (CIVI), accidents de la vie. Expertise complète.',
+  description: 'Avocat en dommage corporel : accidents de la route (Loi Badinter), accidents médicaux (CCI/ONIAM), agressions (CIVI), accidents de la vie. Expertise complète.',
 };
 
 export default async function DommageCorporelPage() {
@@ -30,7 +30,7 @@ export default async function DommageCorporelPage() {
     datePublished: new Date().toISOString(),
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://maitre-laura-baron.fr/dommage-corporel',
+      '@id': 'https://laurabaron-avocat.com/dommage-corporel',
     },
   };
 

@@ -4,7 +4,7 @@ import { Home, User, Scale, FileText, BookOpen, Phone, MapPin } from 'lucide-rea
 
 export const metadata: Metadata = {
   title: 'Plan du Site • Navigation Complète | Maître Laura Baron',
-  description: 'Plan du site complet du cabinet Maître Laura Baron. Retrouvez facilement toutes les pages et sections de notre site spécialisé en dommage corporel.',
+  description: 'Plan du site complet du cabinet Maître Laura Baron. Retrouvez facilement toutes les pages et sections de notre site en dommage corporel.',
 };
 
 export default function SitemapPage() {
